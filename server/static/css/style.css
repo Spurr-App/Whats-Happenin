@@ -1,6 +1,20 @@
+/*
+blue: #516091
+seafoam: #74BEC1
+green: #ADEBBE
+yellow: #EEF3AD
+*/
+
 body {
   margin: 0;
   font-size: 16px;
+  background: #ADEBBE;
+}
+
+#eventpagebody, #userpage {
+  background-color: #516091;
+  padding: 15px;
+
 }
 
 a {
@@ -20,7 +34,6 @@ a:hover {
 
 .top-bar {
   padding: 10px 15px;
-  margin-bottom: 50px;
 }
 .top-bar::after {
   content: '';
@@ -46,12 +59,18 @@ a:hover {
   margin: 0 auto;
   width: 1000px;
 }
+
 sidebar {
   padding-left: 20px;
 }
+
+article {
+  padding: 10px;
+  background-color: #74BEC1;
+}
+
 article.eventdetail {
-  border-bottom-style: groove;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .card-heading {
@@ -71,42 +90,42 @@ article.eventdetail {
   padding: 0 16px;
   color: green;
 }
+
 #userpage {
   display:flex;
 }
+
 #eventpagebody {
   display : flex;
 }
+
 .image {
   max-width: 100px;
   max-height: 100px;
 }
+
 sidebar {
     max-height: 900px;
     overflow-y: scroll;
 }
+
 div#top-bar {
   background-color: lime-green;
 }
-#react-app {
-  background-color: rgb(148, 236, 0);
-  min-height : 900px;
-}
+
 .cardTitle {
   background-color: green;
 }
-#eventpagebody {
-  background-color: limegreen;
-}
-a {
-  color : white;
-}
+
+
+
+
 #map {
   max-width: 500px
 }
+
 form {
   background-color: white;
-
 }
 .container {
   background-color: limegreen;
