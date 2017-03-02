@@ -6,21 +6,22 @@ import EventList from './subcomponents/eventList.jsx';
 
 const Dashboard = ({ data, setEveList, setDetBox, setCoordinates, coordinates }) => (
   <Card className="container">
-    {/* <CardTitle
-      className="cardTitle"
-      title="Whats Happenin'"
-      subtitle="Find local hit events!"
-    /> */}
     <div>
-      <section id="eventpagebody">
+      <section id="main">
         <section id="map" className="col-lg-4">
           <section >
+
+            {/* MAP */}
             <Map geoCode={setCoordinates} coordinates={coordinates} />
+
+            {/* SELECTED EVENT */}
             <article id="EventDetail">
               <EventDetail setCoordinates={setCoordinates} event={data.detailsBox} />
             </article>
           </section>
         </section>
+
+        {/* SIDEBAR */}
         <sidebar className="col-lg-4">
           <EventList
             setCoordinates={setCoordinates}

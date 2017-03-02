@@ -5,18 +5,19 @@ import Auth from '../modules/Auth';
 
 const Base = ({ children }) => (
   <div>
-    <div className="top-bar">
+    <nav>
       <div className="top-bar-left">
-        <IndexLink to="/">What&apos;s Happenin&apos;</IndexLink>
+        <IndexLink to="/">
+        What&apos;s Happenin&apos;
+        </IndexLink>
       </div>
 
       {Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
-          <IndexLink
-            activeClassName="active"
-            to="/"
-          ><strong>Events</strong></IndexLink>&nbsp;
-          <Link to="/profile">Profile</Link>&nbsp;
+          <IndexLink activeClassName="active" to="/">
+            Events
+          </IndexLink>
+          <Link to="/profile">Profile</Link>
           <Link to="/logout">Log out</Link>
         </div>
       ) : (
@@ -26,7 +27,7 @@ const Base = ({ children }) => (
         </div>
       )}
 
-    </div>
+    </nav>
 
     { /* child component will be rendered here */ }
     {children}

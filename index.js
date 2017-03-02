@@ -11,7 +11,7 @@ require('./server/models').connect(process.env.EPMONGO || process.env.MONGO_KEY)
 const app = express();
 // tell the app to look for static files in these directories
 app.use(express.static('./server/static/'));
-app.use(express.static('./client/dist/'));
+app.use(express.static('./client/dist'));
 // tell the app to parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: false }));
 // pass the passport middleware

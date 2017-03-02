@@ -11,10 +11,10 @@ body {
   background: #ADEBBE;
 }
 
-#eventpagebody, #userpage {
+#main {
   background-color: #516091;
   padding: 15px;
-
+  display:flex;
 }
 
 a {
@@ -28,14 +28,18 @@ a:hover {
   color: #1976d2;
 }
 
-.text-center {
-  text-align: center;
+nav {
+  padding: 10px 15px;
+  width: 970px;
+  background: #EEF3AD;
+  margin:auto;
 }
 
-.top-bar {
-  padding: 10px 15px;
+nav a {
+  margin: 0 8px;
 }
-.top-bar::after {
+
+nav::after {
   content: '';
   display: block;
   clear: both;
@@ -43,17 +47,14 @@ a:hover {
 
 .top-bar-left {
   float: left;
-  font-size: 1.5em;
+  /*font-size: 1.5em;*/
 }
 
 .top-bar-right {
   float: right;
 }
 
-.top-bar a,
-.nav a {
-  margin: 0 8px;
-}
+
 
 .container {
   margin: 0 auto;
@@ -91,13 +92,7 @@ article.eventdetail {
   color: green;
 }
 
-#userpage {
-  display:flex;
-}
 
-#eventpagebody {
-  display : flex;
-}
 
 .image {
   max-width: 100px;
@@ -109,8 +104,20 @@ sidebar {
     overflow-y: scroll;
 }
 
-div#top-bar {
-  background-color: lime-green;
+.fullButton {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.drop {
+  width: 446px;
+  height: 200px;
+  margin-bottom: 15px;
+  border: 2px dashed #EEF3AD;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cardTitle {

@@ -7,6 +7,7 @@ import EventDetail from '../components/subcomponents/EventDetail.jsx';
 import Map from '../components/subcomponents/Map.jsx';
 import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
+import Dropzone from 'react-dropzone';
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -113,7 +114,9 @@ class ProfilePage extends React.Component {
    * @param {object} event - the JavaScript event object
    * @param {date object} - the date selected through the DatePicker
    */
+  //  TODO: Fix these numbers being sliced
   handleDate(event, date) {
+    console.log(date);
     const newDate = date.toString().slice(0, 15);
     const ev = this.state.eventDetails;
     ev.eventDateObj = date;
@@ -185,14 +188,11 @@ class ProfilePage extends React.Component {
   render() {
     return (
       <main className="container">
-        <div id="userpage">
+        <div id="main">
           <section id="map">
             {this.state.successMessage &&
               <CardText className="success-message">{this.state.successMessage}</CardText>}
-            <RaisedButton
-              label="makeevent"
-              onTouchTap={this.handleToggle}
-            />
+
             <Drawer
               openSecondary
               open={this.state.open}
@@ -214,6 +214,19 @@ class ProfilePage extends React.Component {
           </section>
           <section id="userprofile" className="col-lg-4" />
           <sidebar className="col-lg-4">
+            <RaisedButton
+              className="fullButton"
+              label="make event"
+              onTouchTap={this.handleToggle}
+            />
+            <Dropzone className="drop">
+              Drop it
+            </Dropzone>
+            <RaisedButton
+              className="fullButton"
+              label="upload image"
+              onTouchTap={this.handleToggle}
+            />
             <EventList
               setCoordinates={this.setCoordinates}
               eventlist={this.state.eventList}
