@@ -1,7 +1,6 @@
 import React from 'react';
 import { CardText } from 'material-ui/Card';
 import Drawer from 'material-ui/Drawer';
-import Stepper from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import Auth from '../modules/Auth.js';
 import Map from '../components/subcomponents/Map.jsx';
@@ -9,6 +8,7 @@ import EventList from '../components/subcomponents/eventList.jsx';
 import EventForm from '../components/subcomponents/EventForm.jsx';
 import EventDetail from '../components/subcomponents/EventDetail.jsx';
 import Dropzone from '../components/subcomponents/DropZone.jsx';
+import Stepper from '../components/subcomponents/Stepper.jsx';
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -229,25 +229,24 @@ class ProfilePage extends React.Component {
             />
 
             {/* DROPZONE */}
-            <Dropzone />
+            {/* <Dropzone /> */}
 
             {/* UPLOAD BUTTON */}
-            <RaisedButton
+            {/* <RaisedButton
               className="fullButton"
               label="upload image"
               onTouchTap={this.handleToggle}
-            />
-
-            {this.state.open ?
-              <p>Woops</p> :
-              <p>Get it</p>}
+            /> */}
 
             {/* EVENT LIST */}
-            <EventList
+            {/* <EventList
               setCoordinates={this.setCoordinates}
               eventlist={this.state.eventList}
               setDetailsBox={this.setDetailsBox}
-            />
+            /> */}
+
+            {/* STEPPER FORM */}
+            <Stepper />
 
           </sidebar>
         </div>
