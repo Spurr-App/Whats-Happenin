@@ -1,21 +1,14 @@
 import React from 'react';
+// import DropZone from 'react-dropzone';
 import {Step, Stepper, StepButton, StepContent} from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import DropZone from './DropZone.jsx';
 
-/**
- * A basic vertical non-linear implementation
- */
-// class FileDrop extends React.Component {
-//
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       files: [],
-//     };
-//     this.onDrop = this.onDrop.bind(this);
-//   }
+const style = {
+  width: '100%',
+};
 
 class VerticalNonLinear extends React.Component {
 
@@ -29,8 +22,8 @@ class VerticalNonLinear extends React.Component {
   }
 
   handleNext() {
-    const { stepIndex} = this.state;
-    if (stepIndex < 2) {
+    const { stepIndex } = this.state;
+    if (stepIndex < 7) {
       this.setState({
         stepIndex: stepIndex + 1
       });
@@ -38,7 +31,7 @@ class VerticalNonLinear extends React.Component {
   }
 
   handlePrev() {
-    const { stepIndex} = this.state;
+    const { stepIndex } = this.state;
     if (stepIndex > 0) {
       this.setState({
         stepIndex: stepIndex - 1
@@ -64,7 +57,7 @@ class VerticalNonLinear extends React.Component {
     return (
       <div
         style={{
-          maxWidth: 380,
+          width: 400,
           maxHeight: 400,
           margin: 'auto'
         }}
@@ -80,7 +73,7 @@ class VerticalNonLinear extends React.Component {
                 name="title"
                 type="title"
                 hintText="Name"
-                // style={style}
+                style={style}
                 // value={eventDetails.title}
                 // onChange={eveChange}
                 // errorText={errors.title}
@@ -89,24 +82,32 @@ class VerticalNonLinear extends React.Component {
             </StepContent>
           </Step>
 
-          {/* EVENT LOCATION */}
+          {/* ABOUT */}
           <Step>
             <StepButton onTouchTap={() => this.setState({ stepIndex: 1 })}>
-              Where's it happening?
+              Tells about your event!
             </StepButton>
             <StepContent>
-
+              <TextField
+                multiLine
+                name="description"
+                type="description"
+                hintText="Describe your sweet event"
+                style={style}
+                // value={eventDetails.description}
+                // onChange={eveChange}
+              />
               {this.renderStepActions(1)}
             </StepContent>
           </Step>
 
-          {/* EVENT TIME */}
+          {/* EVENT IMAGE */}
           <Step>
             <StepButton onTouchTap={() => this.setState({ stepIndex: 2 })}>
-              When's it happening? (time)
+              Show off
             </StepButton>
             <StepContent>
-
+              <DropZone />
               {this.renderStepActions(2)}
             </StepContent>
           </Step>
@@ -114,7 +115,7 @@ class VerticalNonLinear extends React.Component {
           {/* EVENT DATE */}
           <Step>
             <StepButton onTouchTap={() => this.setState({ stepIndex: 3 })}>
-              When's it happening? (date)
+              Whens it happening? (date)
             </StepButton>
             <StepContent>
 
@@ -122,10 +123,10 @@ class VerticalNonLinear extends React.Component {
             </StepContent>
           </Step>
 
-          {/* EVENT IMAGE */}
+          {/* EVENT TIME */}
           <Step>
-            <StepButton onTouchTap={() => this.setState({ stepIndex: 4  })}>
-              Show off
+            <StepButton onTouchTap={() => this.setState({ stepIndex: 4 })}>
+              Whens it happening? (time)
             </StepButton>
             <StepContent>
 
@@ -133,24 +134,44 @@ class VerticalNonLinear extends React.Component {
             </StepContent>
           </Step>
 
-          {/* EVENT BUSINESS */}
+          {/* EVENT LOCATION */}
           <Step>
             <StepButton onTouchTap={() => this.setState({ stepIndex: 5 })}>
-              Are you a business?
+              Where's it happening?
             </StepButton>
             <StepContent>
-
+              <TextField
+                multiLine
+                id="locationslot"
+                name="location"
+                type="location"
+                hintText="Where"
+                style={style}
+                // value={`${location.address} \
+                // longitude: ${location.longitude}, \
+                // latitude: ${location.latitude}`}
+                // onChange={eveChange}
+                // errorText={errors.location}
+              />
               {this.renderStepActions(5)}
             </StepContent>
           </Step>
 
-          {/* WEBSITE */}
+          {/* BUSINESS WEBSITE */}
           <Step>
             <StepButton onTouchTap={() => this.setState({ stepIndex: 6 })}>
-              Have a website?
+              Are you a business?
             </StepButton>
             <StepContent>
-
+              <TextField
+                name="busLink"
+                type="busLink"
+                hintText="Promote your business' website"
+                style={style}
+                // value={eventDetails.busLink}
+                // onChange={eveChange}
+                // errorText={errors.busLink}
+              />
               {this.renderStepActions(6)}
             </StepContent>
           </Step>
@@ -161,22 +182,23 @@ class VerticalNonLinear extends React.Component {
               Tag it up
             </StepButton>
             <StepContent>
-
+              <TextField
+                multiLine
+                name="tags"
+                type="tags"
+                hintText="tags"
+                style={style}
+                // value={eventDetails.tags}
+                // onChange={eveChange}
+              />
               {this.renderStepActions(7)}
             </StepContent>
           </Step>
 
-          {/* ABOUT */}
-          <Step>
-            <StepButton onTouchTap={() => this.setState({ stepIndex: 8 })}>
-              Tells about your event!
-            </StepButton>
-            <StepContent>
-
-              {this.renderStepActions(8)}
-            </StepContent>
-          </Step>
         </Stepper>
+
+        {/* SUBMIT BUTTON */}
+        <RaisedButton label="Submit Event" className="fullButton" />
       </div>
     );
   }
