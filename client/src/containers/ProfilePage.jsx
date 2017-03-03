@@ -7,7 +7,7 @@ import EventDetail from '../components/subcomponents/EventDetail.jsx';
 import Map from '../components/subcomponents/Map.jsx';
 import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
-import Dropzone from 'react-dropzone';
+import Dropzone from '../components/subcomponents/DropZone.jsx';
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -209,24 +209,35 @@ class ProfilePage extends React.Component {
                 location={this.state.location}
               />
             </Drawer>
+
+            {/* MAP AND LOCATION FORM */}
             <Map coordinates={this.state.location} geoCode={this.setCoordinates} />
+
+            {/* SELECTED EVENT */}
             <EventDetail event={this.state.detailsBox} setCoordinates={this.setCoordinates} />
           </section>
-          <section id="userprofile" className="col-lg-4" />
+
+          {/* SIDEBAR */}
           <sidebar className="col-lg-4">
+
+            {/* EVENT BUTTON */}
             <RaisedButton
               className="fullButton"
               label="make event"
               onTouchTap={this.handleToggle}
             />
-            <Dropzone className="drop">
-              Drop it
-            </Dropzone>
+
+            {/* DROPZONE */}
+            <Dropzone />
+
+            {/* UPLOAD BUTTON */}
             <RaisedButton
               className="fullButton"
               label="upload image"
               onTouchTap={this.handleToggle}
             />
+
+            {/* EVENT LIST */}
             <EventList
               setCoordinates={this.setCoordinates}
               eventlist={this.state.eventList}

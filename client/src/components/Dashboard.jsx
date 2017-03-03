@@ -31,7 +31,7 @@ const Dashboard = ({ data, setEveList, setDetBox, setCoordinates, coordinates })
         </sidebar>
       </section>
     </div>)
-    {data && <CardText style={{ fontSize: '16px', color: 'green' }}>{data.secretData}</CardText>}
+    {/* {data && <CardText style={{ fontSize: '16px', color: 'green' }}>{data.secretData}</CardText>} */}
   </Card>
 );
 

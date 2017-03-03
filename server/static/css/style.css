@@ -6,7 +6,9 @@ yellow: #EEF3AD
 */
 
 body {
+  font-family: sans-serif;
   margin: 0;
+  color: #EEF3AD;
   font-size: 16px;
   background: #ADEBBE;
 }
@@ -18,14 +20,14 @@ body {
 }
 
 a {
-  color: #00bcd4;
+  color: #516091;
   font-weight: bold;
   text-decoration: none;
   transition: color 0.4s;
 }
 
 a:hover {
-  color: #1976d2;
+  color: #ADEBBE;
 }
 
 nav {
@@ -47,7 +49,6 @@ nav::after {
 
 .top-bar-left {
   float: left;
-  /*font-size: 1.5em;*/
 }
 
 .top-bar-right {
@@ -68,10 +69,16 @@ sidebar {
 article {
   padding: 10px;
   background-color: #74BEC1;
+  margin-bottom: 15px;
 }
 
-article.eventdetail {
+.selectedEvent {
   margin-bottom: 15px;
+  display: flex;
+}
+
+.selectedEvent img {
+
 }
 
 .card-heading {
@@ -95,8 +102,11 @@ article.eventdetail {
 
 
 .image {
-  max-width: 100px;
-  max-height: 100px;
+  background-image: url('placeholder.png');
+  float:left;
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
 }
 
 sidebar {
@@ -124,16 +134,10 @@ sidebar {
   background-color: green;
 }
 
-
-
-
 #map {
-  max-width: 500px
+  max-width: 500px;
 }
 
 form {
   background-color: white;
-}
-.container {
-  background-color: limegreen;
 }
