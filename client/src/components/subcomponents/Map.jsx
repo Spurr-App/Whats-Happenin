@@ -131,7 +131,7 @@ class Map extends React.Component {
           lng={this.state.location.longitude}
           zoom={12}
           loadingMessage={'Be happy'}
-          params={{ v: '3.exp', key: 'AIzaSyD2dBzgWfwxju9hs5q6GHJwWeDSZoiNRH8' }}
+          params={{ v: '3.exp', key: 'AIzaSyBRQ6rMKIjU7tsFNGxfmRhySiZXOt87Ykc' }}
           onMapCreated={this.onMapCreated}
         >
           <Marker

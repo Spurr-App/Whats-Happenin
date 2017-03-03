@@ -59,7 +59,9 @@ nav::after {
   float: right;
 }
 
-
+path {
+  color: #EEF3AD;
+}
 
 .container {
   margin: 0 auto;
@@ -106,7 +108,8 @@ article {
 
 
 .image {
-  background-image: url('placeholder.png');
+  background: url('logo.png');
+  background-size: 100px 100px;
   float:left;
   margin-right: 10px;
   width: 100px;
@@ -121,10 +124,10 @@ sidebar {
 .fullButton {
   width: 100%;
   margin-bottom: 15px;
+  background: #EEF3AD;
 }
 
 .drop {
-  width: 446px;
   height: 200px;
   margin-bottom: 15px;
   border: 2px dashed #EEF3AD;

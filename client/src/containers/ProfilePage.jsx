@@ -10,6 +10,10 @@ import EventDetail from '../components/subcomponents/EventDetail.jsx';
 import Dropzone from '../components/subcomponents/DropZone.jsx';
 import Stepper from '../components/subcomponents/Stepper.jsx';
 
+const hidden = {
+  display: 'none'
+}
+
 class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
@@ -196,32 +200,16 @@ class ProfilePage extends React.Component {
             {this.state.successMessage &&
               <CardText className="success-message">{this.state.successMessage}</CardText>}
 
-            <Drawer
-              openSecondary
-              open={this.state.open}
-              width={400}
-            >
-              <EventForm
-                errors={this.state.errors}
-                closeDrawer={this.handleToggle}
-                eventDetails={this.state.eventDetails}
-                eveChange={this.changeEvent}
-                processForm={this.processEventForm}
-                handleTime={this.handleTime}
-                handleDate={this.handleDate}
-                location={this.state.location}
-              />
-            </Drawer>
-
-            {/* MAP AND LOCATION FORM */}
-            <Map coordinates={this.state.location} setCoordinates2={this.setCoordinates} />
+            {/* MAP */}
+            <Map coordinates={this.state.location} geoCode={this.setCoordinates} />
 
             {/* SELECTED EVENT */}
-            {/* <EventDetail event={this.state.detailsBox} setCoordinates={this.setCoordinates} /> */}
+            {/* <EventDetail event={this.state.detailsBox}
+              setCoordinates={this.setCoordinates} /> */}
           </section>
 
           {/* SIDEBAR */}
-          <sidebar className="col-lg-4">
+          <sidebar>
 
             {/* EVENT BUTTON */}
             <RaisedButton
@@ -230,25 +218,26 @@ class ProfilePage extends React.Component {
               onTouchTap={this.handleToggle}
             />
 
-            {/* DROPZONE */}
-            {/* <Dropzone /> */}
-
-            {/* UPLOAD BUTTON */}
-            {/* <RaisedButton
-              className="fullButton"
-              label="upload image"
-              onTouchTap={this.handleToggle}
-            /> */}
+            {/* STEPPER FORM */}
+            <Stepper
+              open={this.state.open}
+              errors={this.state.errors}
+              closeDrawer={this.handleToggle}
+              eventDetails={this.state.eventDetails}
+              eveChange={this.changeEvent}
+              processForm={this.processEventForm}
+              handleTime={this.handleTime}
+              handleDate={this.handleDate}
+              location={this.state.location}
+            />
 
             {/* EVENT LIST */}
-            {/* <EventList
+            <EventList
+              open={this.state.open}
               setCoordinates={this.setCoordinates}
               eventlist={this.state.eventList}
               setDetailsBox={this.setDetailsBox}
-            /> */}
-
-            {/* STEPPER FORM */}
-            <Stepper />
+            />
 
           </sidebar>
         </div>
