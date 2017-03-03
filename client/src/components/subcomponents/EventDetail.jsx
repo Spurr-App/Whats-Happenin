@@ -54,26 +54,26 @@ const EventDetail = ({ event: { name,
   }
 
   return (
-    <article className="eventdetail">
-      <img alt="" id="image" className="col-sm-2" />
+    <article className="selectedEvent">
+      {/* <img alt="" id="image" className="col-sm-2" /> */}
+      {/* <img className="image" alt="" src={picLink} /> */}
+
       <section className="eventdescription">
-        <div className="col-md-3">
-          <img className="image" alt="" src={picLink} />
-          <br />
-          <a>{title}</a>
-          <div>Event Time: {eventTime}</div>
-          <div>Event Date: {eventDate}</div>
+        <img className="image" alt="" />
+        <br />
+        <h1>{title}</h1>
+        <div>Event Time: {eventTime}</div>
+        <div>Event Date: {eventDate}</div>
 
-          <button type="button" onClick={setMap}>Show Location on Map</button>
+        <button type="button" onClick={setMap}>Show Location on Map</button>
 
-          {businessName !== '' && <div>Business: {businessName}</div>}
-          {busLink !== '' && <a target="_blank" rel="noreferrer noopener" href={busLink}>Website</a>}
-          <br />
+        {businessName !== '' && <div>Business: {businessName}</div>}
+        {busLink !== '' && <a target="_blank" rel="noreferrer noopener" href={busLink}>Website</a>}
+        <br />
 
-          <p>{description}</p>
-          <div>{tags}</div>
-          <button type="button" onClick={linkToCalender} >Add to Your Calender</button>
-        </div>
+        <p>{description}</p>
+        <div>{tags}</div>
+        <button type="button" onClick={linkToCalender} >Add to Your Calender</button>
       </section>
     </article>
   );

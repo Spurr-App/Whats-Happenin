@@ -122,13 +122,11 @@ class Map extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit} >
-          <input id="address" name="location" onChange={this.handleChange} type="text" />
-          <input type="submit" value="Geocode" />
-        </form>
+        {/* MAP */}
         <Gmaps
           width={'500px'}
-          height={'400px'}
+          height={'300px'}
+          border-radius={'10px'}
           lat={this.state.location.latitude}
           lng={this.state.location.longitude}
           zoom={12}
@@ -149,6 +147,13 @@ class Map extends React.Component {
             content={this.state.location.address}
           />
         </Gmaps>
+
+        {/* LOCATION INPUT */}
+        <form onSubmit={this.handleSubmit} >
+          Search location:
+          <input id="address" name="location" onChange={this.handleChange} type="text" />
+          <input type="submit" value="Go" />
+        </form>
       </div>
     );
   }
