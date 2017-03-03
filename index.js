@@ -41,12 +41,14 @@ app.get('/googlekey', (req, res) => {
 });
 
 app.post('/makeevent', (req, res) => {
+  console.log('post event')
   console.log(req.body, 'event body');
   Event.createEvent(req.body);
   res.send('event made');
 });
 
 app.post('/makeevent', (req, res) => {
+  console.log('post event 2')
   console.log(req.body, 'event body');
   req.body.attendees = {};
   Event.createEvent(req.body);
@@ -59,6 +61,7 @@ app.post('/makeevent', (req, res) => {
  * @return Sets the state detailbox to the clicked event
  */
 app.get('/events', (req, res) => {
+  console.log('get event')
   if (!req.body.username) {
     Event.findAll().then(events => res.send(events));
   } else {
@@ -66,10 +69,18 @@ app.get('/events', (req, res) => {
   }
 });
 
-app.post('/addAttendee', (req, res) => {
-  console.log(req.params);
-  Event.findOneandUpdate({ title: req.params.title }, { attendees: { [req.param.username]: true } });
+app.delete('/deleteEvent/:id', (req, res) => {
+  console.log(req.params, 'pass it into events helper functions');
+  Event.findOneAndRemove({ id: req.params.id }, (err) => {
+    if (err) throw err;
+  });
 });
+
+// app.post('/addAttendee', (req, res) => {
+//   console.log(req.params);
+//   Event.findOneandUpdate({ title: req.params.title }, { attendees: { [req.param.username]: true } });
+// });
+
 
 app.get('*', (req, res) => {
   res.sendFile(Path.resolve(__dirname, './server/static/index.html'));
