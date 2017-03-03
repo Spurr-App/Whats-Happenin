@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import TimePicker from 'material-ui/TimePicker';
 import DatePicker from 'material-ui/DatePicker';
+import DropZone from 'react-dropzone';
 // import { Gmaps, Marker, geocoder, InfoWindow } from 'react-gmaps';
 
 const style = {
@@ -77,6 +78,9 @@ const EventForm = ({
           onChange={eveChange}
           errorText={errors.picLink}
         />
+      </div>
+      <div>
+        <DropZone />
       </div>
       <div>
         <TextField

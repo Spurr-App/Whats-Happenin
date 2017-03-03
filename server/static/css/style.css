@@ -47,6 +47,10 @@ nav::after {
   clear: both;
 }
 
+.center {
+  text-align: center;
+}
+
 .top-bar-left {
   float: left;
 }

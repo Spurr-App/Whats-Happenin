@@ -147,6 +147,7 @@ class Map extends React.Component {
             content={this.state.location.address}
           />
         </Gmaps>
+        <br />
 
         {/* LOCATION INPUT */}
         <form onSubmit={this.handleSubmit} >

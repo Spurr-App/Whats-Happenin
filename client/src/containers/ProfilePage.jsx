@@ -1,12 +1,13 @@
 import React from 'react';
 import { CardText } from 'material-ui/Card';
+import Drawer from 'material-ui/Drawer';
+import Stepper from 'material-ui/Stepper';
+import RaisedButton from 'material-ui/RaisedButton';
 import Auth from '../modules/Auth.js';
+import Map from '../components/subcomponents/Map.jsx';
 import EventList from '../components/subcomponents/eventList.jsx';
 import EventForm from '../components/subcomponents/EventForm.jsx';
 import EventDetail from '../components/subcomponents/EventDetail.jsx';
-import Map from '../components/subcomponents/Map.jsx';
-import Drawer from 'material-ui/Drawer';
-import RaisedButton from 'material-ui/RaisedButton';
 import Dropzone from '../components/subcomponents/DropZone.jsx';
 
 class ProfilePage extends React.Component {
@@ -237,12 +238,17 @@ class ProfilePage extends React.Component {
               onTouchTap={this.handleToggle}
             />
 
+            {this.state.open ?
+              <p>Woops</p> :
+              <p>Get it</p>}
+
             {/* EVENT LIST */}
             <EventList
               setCoordinates={this.setCoordinates}
               eventlist={this.state.eventList}
               setDetailsBox={this.setDetailsBox}
             />
+
           </sidebar>
         </div>
       </main>
