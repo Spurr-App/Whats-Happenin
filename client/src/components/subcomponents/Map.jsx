@@ -147,13 +147,14 @@ class Map extends React.Component {
             content={this.state.location.address}
           />
         </Gmaps>
-        <br />
 
         {/* LOCATION INPUT */}
         <form onSubmit={this.handleSubmit} >
           Search location:
           <input id="address" name="location" onChange={this.handleChange} type="text" />
-          <input type="submit" value="Go" />
+          <button type="submit">
+            Go
+          </button>
         </form>
       </div>
     );

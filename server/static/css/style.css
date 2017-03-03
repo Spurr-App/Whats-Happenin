@@ -13,26 +13,9 @@ body {
   background: #ADEBBE;
 }
 
-#main {
-  background-color: #516091;
-  padding: 15px;
-  display:flex;
-}
-
-a {
-  color: #516091;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.4s;
-}
-
-a:hover {
-  color: #ADEBBE;
-}
-
 nav {
   padding: 10px 15px;
-  width: 970px;
+  width: 900px;
   background: #EEF3AD;
   margin:auto;
 }
@@ -45,6 +28,25 @@ nav::after {
   content: '';
   display: block;
   clear: both;
+}
+
+.container {
+  margin: auto;
+  width: 900px;
+  padding: 15px;
+  background-color: #516091;
+  display:flex;
+}
+
+a {
+  color: #516091;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+a:hover {
+  color: #ADEBBE;
 }
 
 .center {
@@ -63,10 +65,7 @@ path {
   color: #EEF3AD;
 }
 
-.container {
-  margin: 0 auto;
-  width: 1000px;
-}
+
 
 sidebar {
   padding-left: 20px;
@@ -137,14 +136,17 @@ sidebar {
   justify-content: center;
 }
 
-.cardTitle {
-  background-color: green;
-}
-
 #map {
   max-width: 500px;
 }
 
 form {
-  background-color: white;
+  background-color: transparent;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+form input {
+  width: 60%;
 }

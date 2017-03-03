@@ -195,52 +195,55 @@ class ProfilePage extends React.Component {
   render() {
     return (
       <main className="container">
-        <div id="main">
-          <section id="map">
-            {this.state.successMessage &&
-              <CardText className="success-message">{this.state.successMessage}</CardText>}
 
-            {/* MAP */}
-            <Map coordinates={this.state.location} geoCode={this.setCoordinates} />
+        {/* LEFT SIDE */}
+        <section id="map">
+          {this.state.successMessage &&
+            <CardText className="success-message">{this.state.successMessage}</CardText>}
 
-            {/* SELECTED EVENT */}
-            {/* <EventDetail event={this.state.detailsBox}
-              setCoordinates={this.setCoordinates} /> */}
-          </section>
+          {/* MAP */}
+          <Map coordinates={this.state.location} geoCode={this.setCoordinates} />
 
-          {/* SIDEBAR */}
-          <sidebar>
+          {/* SELECTED EVENT */}
+          <EventDetail event={this.state.detailsBox} setCoordinates={this.setCoordinates} />
+        </section>
 
-            {/* EVENT BUTTON */}
-            <RaisedButton
-              className="fullButton"
-              label="make event"
-              onTouchTap={this.handleToggle}
-            />
+        {/* RIGHT SIDE */}
+        <sidebar style={{ width: 400 }}>
 
-            {/* STEPPER FORM */}
-            <Stepper
-              open={this.state.open}
-              errors={this.state.errors}
-              closeDrawer={this.handleToggle}
-              eventDetails={this.state.eventDetails}
-              eveChange={this.changeEvent}
-              processForm={this.processEventForm}
-              handleTime={this.handleTime}
-              handleDate={this.handleDate}
-              location={this.state.location}
-            />
+          {/* EVENT BUTTON */}
+          <RaisedButton
+            className="fullButton"
+            label={this.state.open ?
+              'view events' :
+              'create event'
+            }
+            onTouchTap={this.handleToggle}
+            backgroundColor="#ADEBBE"
+          />
 
-            {/* EVENT LIST */}
-            <EventList
-              open={this.state.open}
-              setCoordinates={this.setCoordinates}
-              eventlist={this.state.eventList}
-              setDetailsBox={this.setDetailsBox}
-            />
+          {/* STEPPER FORM */}
+          <Stepper
+            open={this.state.open}
+            errors={this.state.errors}
+            closeDrawer={this.handleToggle}
+            eventDetails={this.state.eventDetails}
+            eveChange={this.changeEvent}
+            processForm={this.processEventForm}
+            handleTime={this.handleTime}
+            handleDate={this.handleDate}
+            location={this.state.location}
+          />
 
-          </sidebar>
-        </div>
+          {/* EVENT LIST */}
+          <EventList
+            open={this.state.open}
+            setCoordinates={this.setCoordinates}
+            eventlist={this.state.eventList}
+            setDetailsBox={this.setDetailsBox}
+          />
+
+        </sidebar>
       </main>
     );
   }

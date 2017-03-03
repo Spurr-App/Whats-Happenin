@@ -57,7 +57,15 @@ class VerticalNonLinear extends React.Component {
 
   renderStepActions(step) {
     return (
-      <div style={{ margin: '12px 0' }}>
+      <div style={{ margin: '12px 0', float: 'right' }}>
+        { step > 0 && (
+          <FlatButton
+            label="Back"
+            disableTouchRipple
+            disableFocusRipple
+            onTouchTap={this.handlePrev}
+            style={{ margin: '0 12px' }}
+          />) }
         <RaisedButton
           label="Next"
           disableTouchRipple
@@ -68,13 +76,6 @@ class VerticalNonLinear extends React.Component {
             backgroundColor: '#EEF3AD'
           }}
         />
-        { step > 0 && (
-          <FlatButton
-            label="Back"
-            disableTouchRipple
-            disableFocusRipple
-            onTouchTap={this.handlePrev}
-          />) }
       </div>
     );
   }
@@ -85,7 +86,7 @@ class VerticalNonLinear extends React.Component {
     return (
       <div
         style={{
-          width: 400,
+          width: 380,
         }}
       >
 
@@ -123,7 +124,7 @@ class VerticalNonLinear extends React.Component {
               onTouchTap={() => this.setState({ stepIndex: 1 })}
               icon={<Note />}
             >
-              Tells about your event!
+              Talk about your event!
             </StepButton>
             <StepContent>
               <TextField
@@ -159,7 +160,7 @@ class VerticalNonLinear extends React.Component {
               onTouchTap={() => this.setState({ stepIndex: 3 })}
               icon={<Date />}
             >
-              Whens it happening? (date)
+              When is it happening? (date)
             </StepButton>
             <StepContent>
 
@@ -173,7 +174,7 @@ class VerticalNonLinear extends React.Component {
               onTouchTap={() => this.setState({ stepIndex: 4 })}
               icon={<Alarm />}
             >
-              Whens it happening? (time)
+              When is it happening? (time)
             </StepButton>
             <StepContent>
 
@@ -187,7 +188,7 @@ class VerticalNonLinear extends React.Component {
               onTouchTap={() => this.setState({ stepIndex: 5 })}
               icon={<Location />}
             >
-              Where&apos;s it happening?
+              Where is it happening?
             </StepButton>
             <StepContent>
               <TextField
@@ -219,9 +220,9 @@ class VerticalNonLinear extends React.Component {
                 type="busLink"
                 hintText="Promote your business' website"
                 style={style}
-                // value={eventDetails.busLink}
-                // onChange={eveChange}
-                // errorText={errors.busLink}
+                value={this.props.eventDetails.busLink}
+                onChange={this.props.eveChange}
+                errorText={this.props.errors.busLink}
               />
               {this.renderStepActions(6)}
             </StepContent>
@@ -242,8 +243,8 @@ class VerticalNonLinear extends React.Component {
                 type="tags"
                 hintText="tags"
                 style={style}
-                // value={eventDetails.tags}
-                // onChange={eveChange}
+                value={this.props.eventDetails.tags}
+                onChange={this.props.eveChange}
               />
               {this.renderStepActions(7)}
             </StepContent>
@@ -253,18 +254,16 @@ class VerticalNonLinear extends React.Component {
 
         {/* SUBMIT BUTTON */}
         <RaisedButton
-          // onClick={this.test({eventDetails})}
-          label="Submit Event"
           className="fullButton"
+          label="Submit Event"
+          backgroundColor="#ADEBBE"
           style={
             this.props.open ?
-            {} :
-            {
-              display: 'none',
-              margin: '15px'
-            }
+            { margin: '15px 0' } :
+            { display: 'none' }
           }
         />
+
       </div>
     );
   }

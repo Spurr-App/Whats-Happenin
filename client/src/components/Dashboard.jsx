@@ -5,38 +5,35 @@ import Map from './subcomponents/Map.jsx';
 import EventList from './subcomponents/eventList.jsx';
 
 const Dashboard = ({ data, linkToCalender, setDetailsBox, setCoordinates, setCoordinates2, deleteEvent }) => (
-  <Card className="container">
-    <div>
-      <section id="main">
-        <section id="map" className="col-lg-4">
-          <section >
+  <main className="container">
 
-            {/* MAP */}
-            <Map setCoordinates2={setCoordinates2} />
+    {/* LEFT SIDE */}
+    <section id="map">
+      <section >
+        {/* MAP */}
+        <Map setCoordinates2={setCoordinates2} />
 
-            {/* SELECTED EVENT */}
-            <article id="EventDetail">
-              <EventDetail
-                setCoordinates={setCoordinates}
-                event={data.detailsBox}
-                linkToCalender={linkToCalender}
-              />
-            </article>
-          </section>
-        </section>
-
-        {/* SIDEBAR */}
-        <sidebar className="col-lg-4">
-          <EventList
+        {/* SELECTED EVENT */}
+        <article id="EventDetail">
+          <EventDetail
             setCoordinates={setCoordinates}
-            eventlist={data.eventList}
-            setDetailsBox={setDetailsBox}
-            deleteEvent={deleteEvent}
+            event={data.detailsBox}
+            linkToCalender={linkToCalender}
           />
-        </sidebar>
+        </article>
       </section>
-    </div>)
-  </Card>
+    </section>
+
+    {/* RIGHT SIDE */}
+    <sidebar className="col-lg-4">
+      <EventList
+        setCoordinates={setCoordinates}
+        eventlist={data.eventList}
+        setDetailsBox={setDetailsBox}
+        deleteEvent={deleteEvent}
+      />
+    </sidebar>
+  </main>
 );
 
 Dashboard.propTypes = {
