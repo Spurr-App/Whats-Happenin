@@ -26,7 +26,7 @@ const Event = ({ event, event: {
   businessName,
   busLink,
   location,
-}, setCoordinates, setDetailsBox, onDeleteParent }) => {
+}, setCoordinates, setDetailsBox, fetchEvents }) => {
 /* setDetailsBox passed down from mappage
  * @param {props.event} an event item
  * @returns sets the Event details box to this event
@@ -41,27 +41,23 @@ const Event = ({ event, event: {
   }
 
   function onDeleteChild() {
-    onDeleteParent(event._id);
-    console.log(event, 'removeEventChild')
-      var url = '/deleteEvent/' + event._id;
-      return fetch(url, {
-          method: 'DELETE',
-      })
-      .then(res => res)
-      //trigger function in parent component
-      // this.props.onDeleteParent.bind(null, this.props.event._id)
-      // removeEventParent();
-    }
+    fetch(`/deleteEvent/${event._id}`, {
+      method: 'DELETE',
+    })
+    .then(() => fetchEvents());
+    fetchEvents();
+  }
 
-  const addAttendee = function addAttendee() {
-    fetch('/addAttendee', { method: 'POST',
-      params: { username: localStorage.getItem('email'), event: title }
-    }).then((attended) => {
-      if (attended) {
-        event.attendees += 1;
-      }
-    });
-  };
+  // function addAttendee() {
+  //   fetch('/addAttendee', { method: 'POST',
+  //     params: { username: localStorage.getItem('email'), event: title }
+  //   }).then((attended) => {
+  //     if (attended) {
+  //       event.attendees += 1;
+  //     }
+  //   });
+  // }
+
   return (
     <article className="eventdetail">
       <div className="eventlistbox">

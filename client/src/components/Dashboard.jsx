@@ -4,7 +4,7 @@ import EventDetail from './subcomponents/EventDetail.jsx';
 import Map from './subcomponents/Map.jsx';
 import EventList from './subcomponents/eventList.jsx';
 
-const Dashboard = ({ data, setEveList, setDetBox, setCoordinates, onDeleteChild, coordinates }) => (
+const Dashboard = ({ data, setEveList, setDetBox, setCoordinates, fetchEvents, coordinates }) => (
   <Card className="container">
     <div>
       <section id="main">
@@ -27,7 +27,7 @@ const Dashboard = ({ data, setEveList, setDetBox, setCoordinates, onDeleteChild,
             setCoordinates={setCoordinates}
             eventlist={data.eventList}
             setDetailsBox={setDetBox}
-            onDeleteParent={onDeleteChild}
+            fetchEvents={fetchEvents}
           />
         </sidebar>
       </section>
@@ -40,7 +40,7 @@ Dashboard.propTypes = {
   setEveList: React.PropTypes.func.isRequired,
   setDetBox: React.PropTypes.func.isRequired,
   setCoordinates: React.PropTypes.func.isRequired,
-  // onDeleteChild: React.PropTypes.func.isRequired,
+  fetchEvents: React.PropTypes.func.isRequired,
 };
 
 export default Dashboard;
