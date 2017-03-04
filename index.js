@@ -76,11 +76,6 @@ app.delete('/deleteEvent/:id', (req, res) => {
   });
 });
 
-// app.post('/addAttendee', (req, res) => {
-//   console.log(req.params);
-//   Event.findOneandUpdate({ title: req.params.title }, { attendees: { [req.param.username]: true } });
-// });
-
 
 app.get('*', (req, res) => {
   res.sendFile(Path.resolve(__dirname, './server/static/index.html'));

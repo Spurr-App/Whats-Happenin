@@ -1,6 +1,6 @@
 import React from 'react';
 // import DropZone from 'react-dropzone';
-import {Step, Stepper, StepButton, StepContent} from 'material-ui/Stepper';
+import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
@@ -16,7 +16,7 @@ class VerticalNonLinear extends React.Component {
     super();
     this.state = {
       stepIndex: 0
-    }
+    };
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
   }
@@ -41,12 +41,26 @@ class VerticalNonLinear extends React.Component {
 
   renderStepActions(step) {
     return (
-      <div style={{
-        margin: '12px 0'
-      }}>
-        <RaisedButton label="Next" disableTouchRipple={true} disableFocusRipple={true} primary={true} onTouchTap={this.handleNext} style={{
-          marginRight: 12
-        }}/> {step > 0 && (<FlatButton label="Back" disableTouchRipple={true} disableFocusRipple={true} onTouchTap={this.handlePrev}/>)}
+      <div
+        style={{
+          margin: '12px 0'
+        }}
+      >
+        <RaisedButton
+          label="Next"
+          disableTouchRipple
+          disableFocusRipple
+          primary
+          onTouchTap={this.handleNext}
+          style={{ marginRight: 12
+          }}
+        /> {step > 0 && (
+          <FlatButton
+            label="Back"
+            disableTouchRipple
+            disableFocusRipple
+            onTouchTap={this.handlePrev}
+          />)}
       </div>
     );
   }
@@ -62,11 +76,11 @@ class VerticalNonLinear extends React.Component {
           margin: 'auto'
         }}
       >
-        <Stepper activeStep={ stepIndex} linear={false} orientation="vertical">
+        <Stepper activeStep={stepIndex} linear={false} orientation="vertical">
           {/* EVENT NAME */}
           <Step>
             <StepButton onTouchTap={() => this.setState({ stepIndex: 0 })}>
-              What's your party called?
+              What&apos; your party called?
             </StepButton>
             <StepContent>
               <TextField
@@ -137,7 +151,7 @@ class VerticalNonLinear extends React.Component {
           {/* EVENT LOCATION */}
           <Step>
             <StepButton onTouchTap={() => this.setState({ stepIndex: 5 })}>
-              Where's it happening?
+              Where&apos; it happening?
             </StepButton>
             <StepContent>
               <TextField
