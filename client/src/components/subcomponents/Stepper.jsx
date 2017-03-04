@@ -4,6 +4,8 @@ import {Step, Stepper, StepButton, StepContent} from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import TimePicker from 'material-ui/TimePicker';
+import DatePicker from 'material-ui/DatePicker';
 import DropZone from './DropZone.jsx';
 import Icon from './Icons.jsx';
 
@@ -27,8 +29,8 @@ class VerticalNonLinear extends React.Component {
     this.test = this.test.bind(this);
   }
 
-  test(input) {
-    console.log(input);
+  test() {
+    console.log('hey');
   }
 
   handleNext() {
@@ -78,12 +80,7 @@ class VerticalNonLinear extends React.Component {
     const { stepIndex } = this.state;
 
     return (
-      <div
-        style={{
-          width: 380,
-        }}
-      >
-
+      <div style={{ width: 380 }}>
         <Stepper
           activeStep={stepIndex}
           linear={false}
@@ -157,7 +154,16 @@ class VerticalNonLinear extends React.Component {
               When is it happening? (date)
             </StepButton>
             <StepContent>
-
+              <DatePicker
+                type="eventDate"
+                hintText="Date"
+                name="eventDate"
+                style={style}
+                mode="landscape"
+                onChange={this.props.handleDate}
+                value={this.props.eventDetails.eventDateObj}
+                errorText={this.props.errors.eventDate}
+              />
               {this.renderStepActions(3)}
             </StepContent>
           </Step>
@@ -171,7 +177,15 @@ class VerticalNonLinear extends React.Component {
               When is it happening? (time)
             </StepButton>
             <StepContent>
-
+              <TimePicker
+                name="eventTime"
+                type="eventTime"
+                hintText="Time"
+                style={style}
+                onChange={this.props.handleTime}
+                value={this.props.eventDetails.eventTimeObj}
+                errorText={this.props.errors.eventTime}
+              />
               {this.renderStepActions(4)}
             </StepContent>
           </Step>
@@ -248,6 +262,7 @@ class VerticalNonLinear extends React.Component {
 
         {/* SUBMIT BUTTON */}
         <RaisedButton
+          onTouchTap={this.props.processForm}
           className="fullButton"
           label="Submit Event"
           backgroundColor="#ADEBBE"

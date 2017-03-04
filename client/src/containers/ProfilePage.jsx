@@ -1,15 +1,14 @@
 import React from 'react';
 import { CardText } from 'material-ui/Card';
-import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
 import Auth from '../modules/Auth.js';
 import Map from '../components/subcomponents/Map.jsx';
-import EventList from '../components/subcomponents/eventList.jsx';
-import EventForm from '../components/subcomponents/EventForm.jsx';
-import EventDetail from '../components/subcomponents/EventDetail.jsx';
-import Dropzone from '../components/subcomponents/DropZone.jsx';
-import Stepper from '../components/subcomponents/Stepper.jsx';
 import Icon from '../components/subcomponents/Icons.jsx';
+import EventDetail from '../components/subcomponents/EventDetail.jsx';
+import EventList from '../components/subcomponents/eventList.jsx';
+import Stepper from '../components/subcomponents/Stepper.jsx';
+import Dropzone from '../components/subcomponents/DropZone.jsx';
+
 
 const hidden = {
   display: 'none'
@@ -140,6 +139,7 @@ class ProfilePage extends React.Component {
    * @return Sets the state successMessage to the returned message if successful
    */
   processEventForm(event) {
+    console.log(event);
     event.preventDefault();
     const eveDet = this.state.eventDetails;
     eveDet.location = {
