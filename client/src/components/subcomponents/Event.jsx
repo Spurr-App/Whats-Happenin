@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Icon from './Icons.jsx';
 
-const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
+const Event = ({ event, deleteEvent, setDetailsBox, event: {
   title,
   username,
   eventTime,
@@ -16,10 +16,6 @@ const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
       <br />
       <button type="button" onClick={() => setDetailsBox(event)}>
         View Event
-      </button>
-      <br />
-      <button type="button" onClick={() => setCoordinates(event)}>
-        View Location
       </button>
       <br />
       <button type="button" onClick={() => deleteEvent(event)}>
@@ -66,7 +62,6 @@ Event.propTypes = {
   event: React.PropTypes.shape({}).isRequired,
   deleteEvent: PropTypes.func.isRequired,
   setDetailsBox: PropTypes.func.isRequired,
-  setCoordinates: PropTypes.func.isRequired
 };
 
 export default Event;

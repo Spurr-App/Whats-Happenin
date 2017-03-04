@@ -287,11 +287,7 @@ VerticalNonLinear.propTypes = {
   processForm: React.PropTypes.func.isRequired,
   handleTime: React.PropTypes.func.isRequired,
   handleDate: React.PropTypes.func.isRequired,
-  location: React.PropTypes.shape({
-    longitude: React.PropTypes.string,
-    latitude: React.PropTypes.string,
-    address: React.PropTypes.string,
-  }).isRequired,
+  location: React.PropTypes.shape({}).isRequired,
   errors: React.PropTypes.shape({}).isRequired,
 };
 

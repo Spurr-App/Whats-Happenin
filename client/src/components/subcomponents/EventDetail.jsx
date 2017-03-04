@@ -12,7 +12,7 @@ const EventDetail = ({ event: {
   businessName,
   busLink,
 }, linkToCalender, event }) => (
-  <article>
+  <article id="selectedEvent">
     <div className="left">
       <img className="image" alt="" src="" />
       <div>{tags}</div>

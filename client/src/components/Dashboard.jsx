@@ -13,7 +13,6 @@ const Dashboard = ({ data, linkToCalender, setDetailsBox, setCoordinates, delete
 
       {/* SELECTED EVENT */}
       <EventDetail
-        setCoordinates={setCoordinates}
         event={data.detailsBox}
         linkToCalender={linkToCalender}
       />
@@ -22,7 +21,6 @@ const Dashboard = ({ data, linkToCalender, setDetailsBox, setCoordinates, delete
     {/* RIGHT SIDE */}
     <div id="sidebar">
       <EventList
-        setCoordinates={setCoordinates}
         eventList={data.eventList}
         setDetailsBox={setDetailsBox}
         deleteEvent={deleteEvent}

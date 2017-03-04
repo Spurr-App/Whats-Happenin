@@ -118,6 +118,16 @@ path {
   position: fixed;
 }
 
+#selectedEvent {
+  background: #ADEBBE;
+  color: #516091;
+  max-height: 300px;
+}
+
+#selectedEvent path {
+  color: #516091;
+}
+
 #sidebar {
   padding-left: 20px;
   position: relative;

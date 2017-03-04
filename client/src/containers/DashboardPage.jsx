@@ -75,6 +75,7 @@ class DashboardPage extends React.Component {
    * @return Sets the state detailbox to the clicked event
    */
   setDetailsBox(detailsBox) {
+    this.setCoordinates(detailsBox);
     this.setState({ detailsBox });
   }
 

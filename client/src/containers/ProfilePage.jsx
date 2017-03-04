@@ -187,10 +187,6 @@ class ProfilePage extends Dashboard {
     .catch(err => `Whoops: ${err}`);
   }
 
-  // handleToggle() {
-  //   this.setState({ viewForm: !this.state.viewForm });
-  // }
-
   render() {
     return (
       <div id="main">
@@ -243,7 +239,6 @@ class ProfilePage extends Dashboard {
           {/* EVENT LIST */}
           <EventList
             view={this.state.viewForm}
-            setCoordinates={this.setCoordinates}
             eventList={this.state.eventList}
             setDetailsBox={this.setDetailsBox}
             deleteEvent={this.deleteEvent}
