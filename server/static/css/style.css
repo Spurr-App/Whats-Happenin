@@ -53,6 +53,7 @@ nav::after {
 #main {
   margin: auto;
   width: 900px;
+  min-height: 900px;
   padding: 15px;
   background-color: #516091;
   display:flex;

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Card } from 'material-ui/Card';
 import EventDetail from './subcomponents/EventDetail.jsx';
 import Map from './subcomponents/Map.jsx';
-import EventList from './subcomponents/eventList.jsx';
+import EventList from './subcomponents/EventList.jsx';
 
 const Dashboard = ({ data, linkToCalender, setDetailsBox, setCoordinates, setCoordinates2, deleteEvent }) => (
   <div id="main">
@@ -24,7 +24,7 @@ const Dashboard = ({ data, linkToCalender, setDetailsBox, setCoordinates, setCoo
     <div id="sidebar">
       <EventList
         setCoordinates={setCoordinates}
-        eventlist={data.eventList}
+        eventList={data.eventList}
         setDetailsBox={setDetailsBox}
         deleteEvent={deleteEvent}
       />

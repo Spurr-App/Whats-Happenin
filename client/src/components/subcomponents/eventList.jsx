@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import Event from './Event.jsx';
 
-const EventList = ({ open, eventlist, deleteEvent, setDetailsBox, setCoordinates }) =>
-  <div style={open ? { display: 'none' } : {}}>
-    {eventlist.map(event =>
+const EventList = ({ open, eventList, deleteEvent, setDetailsBox, setCoordinates }) => (
+  <div>
+    {/* style={open ? { display: 'none' } : {}} */}
+    {eventList.map(event =>
       <Event
         key={event._id}
         setCoordinates={setCoordinates}
@@ -12,14 +13,15 @@ const EventList = ({ open, eventlist, deleteEvent, setDetailsBox, setCoordinates
         event={event}
       />,
     )}
-  </div>;
+  </div>
+);
 
 EventList.propTypes = {
-  open: React.PropTypes.bool.isRequired,
+  // open: React.PropTypes.bool.isRequired,
   deleteEvent: PropTypes.func.isRequired,
-  eventlist: React.PropTypes.array.isRequired,
-  setDetailsBox: React.PropTypes.func.isRequired,
-  setCoordinates: React.PropTypes.func.isRequired,
+  eventList: PropTypes.array.isRequired,
+  setDetailsBox: PropTypes.func.isRequired,
+  setCoordinates: PropTypes.func.isRequired,
 };
 
 export default EventList;

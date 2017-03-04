@@ -5,7 +5,7 @@ import Auth from '../modules/Auth.js';
 import Map from '../components/subcomponents/Map.jsx';
 import Icon from '../components/subcomponents/Icons.jsx';
 import EventDetail from '../components/subcomponents/EventDetail.jsx';
-import EventList from '../components/subcomponents/eventList.jsx';
+import EventList from '../components/subcomponents/EventList.jsx';
 import Stepper from '../components/subcomponents/Stepper.jsx';
 import Dropzone from '../components/subcomponents/DropZone.jsx';
 
@@ -244,15 +244,15 @@ class ProfilePage extends React.Component {
           <EventList
             open={this.state.open}
             setCoordinates={this.setCoordinates}
-            eventlist={this.state.eventList}
+            eventList={this.state.eventList}
             setDetailsBox={this.setDetailsBox}
+            // deleteEvent={deleteEvent}
           />
 
         </div>
       </div>
     );
   }
-
 }
 
 export default ProfilePage;

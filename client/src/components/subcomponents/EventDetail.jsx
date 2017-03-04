@@ -12,7 +12,7 @@ const EventDetail = ({ event: {
   businessName,
   busLink,
 }, setCoordinates, linkToCalender, event }) => (
-  <section className="eventdescription">
+  <article>
     <div className="left">
       <img className="image" alt="" src="" />
       <div>{tags}</div>
@@ -52,7 +52,7 @@ const EventDetail = ({ event: {
 
     <p>{description}</p>
 
-  </section>
+  </article>
 );
 
 EventDetail.propTypes = {
