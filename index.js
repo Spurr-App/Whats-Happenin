@@ -40,16 +40,13 @@ app.get('/googlekey', (req, res) => {
   res.status(200).json(process.env.GOOGLE_MAP);
 });
 
+// TODO: wtf are these?
 app.post('/makeevent', (req, res) => {
-  console.log('post event')
-  console.log(req.body, 'event body');
   Event.createEvent(req.body);
   res.send('event made');
 });
 
 app.post('/makeevent', (req, res) => {
-  console.log('post event 2')
-  console.log(req.body, 'event body');
   req.body.attendees = {};
   Event.createEvent(req.body);
 });
@@ -61,7 +58,7 @@ app.post('/makeevent', (req, res) => {
  * @return Sets the state detailbox to the clicked event
  */
 app.get('/events', (req, res) => {
-  console.log('get event')
+  console.warn('getting events')
   if (!req.body.username) {
     Event.findAll().then(events => res.send(events));
   } else {
@@ -71,8 +68,11 @@ app.get('/events', (req, res) => {
 
 app.delete('/deleteEvent/:id', (req, res) => {
   console.log(req.params, 'pass it into events helper functions');
-  Event.findOneAndRemove({ id: req.params.id }, (err) => {
-    if (err) throw err;
+  Event.remove({ id: req.params.id }, (err, success) => {
+    if (err) {
+      res.status(204);
+    }
+    res.status(200).send(success);
   });
 });
 

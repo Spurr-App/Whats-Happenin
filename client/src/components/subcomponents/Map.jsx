@@ -84,7 +84,7 @@ class Map extends React.Component {
         address: json.results[0].formatted_address
       },
     });
-    this.props.geoCode({
+    this.props.setCoordinates2({
       latitude: json.results[0].geometry.location.lat,
       longitude: json.results[0].geometry.location.lng,
       address: json.results[0].formatted_address,

@@ -62,18 +62,7 @@ class ProfilePage extends React.Component {
       this.setState({ detailsBox: events[0] });
     }).catch(err => console.error(err));
   }
-  componentDidMount() {
-    /**
-   *
-   * @param {events} a list of event objects from query
-   * @returns Sets the state eventlist to the array of events
-   */
-    fetch('/deleteEvent').then(events => events.json())
-    .then((events) => {
-      this.setState({ eventList: events });
-      this.setState({ detailsBox: events[0] });
-    }).catch(err => console.error(err));
-  }
+
 
   /**
    *
@@ -225,10 +214,10 @@ class ProfilePage extends React.Component {
             </Drawer>
 
             {/* MAP AND LOCATION FORM */}
-            <Map coordinates={this.state.location} geoCode={this.setCoordinates} />
+            <Map coordinates={this.state.location} setCoordinates2={this.setCoordinates} />
 
             {/* SELECTED EVENT */}
-            <EventDetail event={this.state.detailsBox} setCoordinates={this.setCoordinates} />
+            {/* <EventDetail event={this.state.detailsBox} setCoordinates={this.setCoordinates} /> */}
           </section>
 
           {/* SIDEBAR */}

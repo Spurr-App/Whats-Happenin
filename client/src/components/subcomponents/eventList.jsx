@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Event from './Event.jsx';
 
-const EventList = ({ eventlist, setDetailsBox, fetchEvents, setCoordinates }) =>
+const EventList = ({ eventlist, deleteEvent, setDetailsBox, setCoordinates }) =>
   <div>
     {eventlist.map(event =>
       <Event
         key={event._id}
         setCoordinates={setCoordinates}
         setDetailsBox={setDetailsBox}
-        fetchEvents={fetchEvents}
+        deleteEvent={deleteEvent}
         event={event}
       />,
     )}
   </div>;
 
 EventList.propTypes = {
-  eventlist: React.PropTypes.array.isRequired,
-  setDetailsBox: React.PropTypes.func.isRequired,
-  fetchEvents: React.PropTypes.func.isRequired,
-  setCoordinates: React.PropTypes.func.isRequired,
+  eventlist: PropTypes.array.isRequired,
+  setDetailsBox: PropTypes.func.isRequired,
+  deleteEvent: PropTypes.func.isRequired,
+  setCoordinates: PropTypes.func.isRequired,
 };
+
 export default EventList;
