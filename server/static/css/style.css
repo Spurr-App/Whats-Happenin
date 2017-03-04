@@ -1,57 +1,88 @@
+/*
+blue: #516091
+seafoam: #74BEC1
+green: #ADEBBE
+yellow: #EEF3AD
+*/
+
 body {
+  font-family: sans-serif;
   margin: 0;
+  color: #EEF3AD;
   font-size: 16px;
+  background: #ADEBBE;
+}
+
+#main {
+  background-color: #516091;
+  padding: 15px;
+  display:flex;
 }
 
 a {
-  color: #00bcd4;
+  color: #516091;
   font-weight: bold;
   text-decoration: none;
   transition: color 0.4s;
 }
 
 a:hover {
-  color: #1976d2;
+  color: #ADEBBE;
 }
 
-.text-center {
-  text-align: center;
-}
-
-.top-bar {
+nav {
   padding: 10px 15px;
-  margin-bottom: 50px;
+  width: 970px;
+  background: #EEF3AD;
+  margin:auto;
 }
-.top-bar::after {
+
+nav a {
+  margin: 0 8px;
+}
+
+nav::after {
   content: '';
   display: block;
   clear: both;
 }
 
+.center {
+  text-align: center;
+}
+
 .top-bar-left {
   float: left;
-  font-size: 1.5em;
 }
 
 .top-bar-right {
   float: right;
 }
 
-.top-bar a,
-.nav a {
-  margin: 0 8px;
-}
+
 
 .container {
   margin: 0 auto;
   width: 1000px;
 }
+
 sidebar {
   padding-left: 20px;
 }
-article.eventdetail {
-  border-bottom-style: groove;
-  margin-bottom: 5px;
+
+article {
+  padding: 10px;
+  background-color: #74BEC1;
+  margin-bottom: 15px;
+}
+
+.selectedEvent {
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.selectedEvent img {
+
 }
 
 .card-heading {
@@ -71,43 +102,46 @@ article.eventdetail {
   padding: 0 16px;
   color: green;
 }
-#userpage {
-  display:flex;
-}
-#eventpagebody {
-  display : flex;
-}
+
+
+
 .image {
-  max-width: 100px;
-  max-height: 100px;
+  background-image: url('placeholder.png');
+  float:left;
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
 }
+
 sidebar {
     max-height: 900px;
     overflow-y: scroll;
 }
-div#top-bar {
-  background-color: lime-green;
+
+.fullButton {
+  width: 100%;
+  margin-bottom: 15px;
 }
-#react-app {
-  background-color: rgb(148, 236, 0);
-  min-height : 900px;
+
+.drop {
+  width: 446px;
+  height: 200px;
+  margin-bottom: 15px;
+  border: 2px dashed #EEF3AD;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .cardTitle {
   background-color: green;
 }
-#eventpagebody {
-  background-color: limegreen;
-}
-a {
-  color : white;
-}
+
 #map {
-  max-width: 500px
+  max-width: 500px;
 }
+
 form {
   background-color: white;
-
-}
-.container {
-  background-color: limegreen;
 }

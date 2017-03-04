@@ -1,12 +1,14 @@
 import React from 'react';
 import { CardText } from 'material-ui/Card';
+import Drawer from 'material-ui/Drawer';
+import RaisedButton from 'material-ui/RaisedButton';
 import Auth from '../modules/Auth.js';
+import Map from '../components/subcomponents/Map.jsx';
 import EventList from '../components/subcomponents/eventList.jsx';
 import EventForm from '../components/subcomponents/EventForm.jsx';
 import EventDetail from '../components/subcomponents/EventDetail.jsx';
-import Map from '../components/subcomponents/Map.jsx';
-import Drawer from 'material-ui/Drawer';
-import RaisedButton from 'material-ui/RaisedButton';
+import Dropzone from '../components/subcomponents/DropZone.jsx';
+import Stepper from '../components/subcomponents/Stepper.jsx';
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -60,6 +62,8 @@ class ProfilePage extends React.Component {
       this.setState({ detailsBox: events[0] });
     }).catch(err => console.error(err));
   }
+
+
   /**
    *
    * @param {event} the event object a user clicks on
@@ -113,7 +117,9 @@ class ProfilePage extends React.Component {
    * @param {object} event - the JavaScript event object
    * @param {date object} - the date selected through the DatePicker
    */
+  //  TODO: Fix these numbers being sliced
   handleDate(event, date) {
+    console.log(date);
     const newDate = date.toString().slice(0, 15);
     const ev = this.state.eventDetails;
     ev.eventDateObj = date;
@@ -185,14 +191,11 @@ class ProfilePage extends React.Component {
   render() {
     return (
       <main className="container">
-        <div id="userpage">
+        <div id="main">
           <section id="map">
             {this.state.successMessage &&
               <CardText className="success-message">{this.state.successMessage}</CardText>}
-            <RaisedButton
-              label="makeevent"
-              onTouchTap={this.handleToggle}
-            />
+
             <Drawer
               openSecondary
               open={this.state.open}
@@ -209,16 +212,44 @@ class ProfilePage extends React.Component {
                 location={this.state.location}
               />
             </Drawer>
-            <Map coordinates={this.state.location} geoCode={this.setCoordinates} />
-            <EventDetail event={this.state.detailsBox} setCoordinates={this.setCoordinates} />
+
+            {/* MAP AND LOCATION FORM */}
+            <Map coordinates={this.state.location} setCoordinates2={this.setCoordinates} />
+
+            {/* SELECTED EVENT */}
+            {/* <EventDetail event={this.state.detailsBox} setCoordinates={this.setCoordinates} /> */}
           </section>
-          <section id="userprofile" className="col-lg-4" />
+
+          {/* SIDEBAR */}
           <sidebar className="col-lg-4">
-            <EventList
+
+            {/* EVENT BUTTON */}
+            <RaisedButton
+              className="fullButton"
+              label="make event"
+              onTouchTap={this.handleToggle}
+            />
+
+            {/* DROPZONE */}
+            {/* <Dropzone /> */}
+
+            {/* UPLOAD BUTTON */}
+            {/* <RaisedButton
+              className="fullButton"
+              label="upload image"
+              onTouchTap={this.handleToggle}
+            /> */}
+
+            {/* EVENT LIST */}
+            {/* <EventList
               setCoordinates={this.setCoordinates}
               eventlist={this.state.eventList}
               setDetailsBox={this.setDetailsBox}
-            />
+            /> */}
+
+            {/* STEPPER FORM */}
+            <Stepper />
+
           </sidebar>
         </div>
       </main>

@@ -84,7 +84,7 @@ class Map extends React.Component {
         address: json.results[0].formatted_address
       },
     });
-    this.props.geoCode({
+    this.props.setCoordinates2({
       latitude: json.results[0].geometry.location.lat,
       longitude: json.results[0].geometry.location.lng,
       address: json.results[0].formatted_address,
@@ -122,18 +122,16 @@ class Map extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit} >
-          <input id="address" name="location" onChange={this.handleChange} type="text" />
-          <input type="submit" value="Geocode" />
-        </form>
+        {/* MAP */}
         <Gmaps
           width={'500px'}
-          height={'400px'}
+          height={'300px'}
+          border-radius={'10px'}
           lat={this.state.location.latitude}
           lng={this.state.location.longitude}
           zoom={12}
           loadingMessage={'Be happy'}
-          params={{ v: '3.exp', key: 'AIzaSyDr0vzKpPyWUghywsRJI9PXgOtNkVs2u3g' }}
+          params={{ v: '3.exp', key: 'AIzaSyD2dBzgWfwxju9hs5q6GHJwWeDSZoiNRH8' }}
           onMapCreated={this.onMapCreated}
         >
           <Marker
@@ -149,6 +147,14 @@ class Map extends React.Component {
             content={this.state.location.address}
           />
         </Gmaps>
+        <br />
+
+        {/* LOCATION INPUT */}
+        <form onSubmit={this.handleSubmit} >
+          Search location:
+          <input id="address" name="location" onChange={this.handleChange} type="text" />
+          <input type="submit" value="Go" />
+        </form>
       </div>
     );
   }

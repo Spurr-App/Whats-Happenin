@@ -10,6 +10,14 @@ const Events = {
   findUserevent(user) {
     return Event.find().where({ username: user })
       .then(events => events);
+  },
+  remove(id, cb) {
+    Event.remove({ _id: id.id }, (error, success) => {
+      if (error) {
+        cb(error);
+      }
+      cb(null, success);
+    });
   }
 };
 

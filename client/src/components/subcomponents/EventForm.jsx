@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import TimePicker from 'material-ui/TimePicker';
 import DatePicker from 'material-ui/DatePicker';
+import DropZone from 'react-dropzone';
 // import { Gmaps, Marker, geocoder, InfoWindow } from 'react-gmaps';
 
 const style = {
@@ -23,7 +24,7 @@ const EventForm = ({
         <TextField
           name="title"
           type="title"
-          hintText="What's the party called?"
+          hintText="Name"
           style={style}
           value={eventDetails.title}
           onChange={eveChange}
@@ -36,7 +37,7 @@ const EventForm = ({
           id="locationslot"
           name="location"
           type="location"
-          hintText="Where tha party at?!"
+          hintText="Where"
           style={style}
           value={`${location.address} \
           longitude: ${location.longitude}, \
@@ -49,7 +50,7 @@ const EventForm = ({
         <TimePicker
           name="eventTime"
           type="eventTime"
-          hintText="12hr Format"
+          hintText="Time"
           style={style}
           onChange={handleTime}
           value={eventDetails.eventTimeObj}
@@ -59,7 +60,7 @@ const EventForm = ({
       <div>
         <DatePicker
           type="eventDate"
-          hintText="Portrait Dialog"
+          hintText="Date"
           name="eventDate"
           style={style}
           onChange={handleDate}
@@ -77,6 +78,9 @@ const EventForm = ({
           onChange={eveChange}
           errorText={errors.picLink}
         />
+      </div>
+      <div>
+        <DropZone />
       </div>
       <div>
         <TextField

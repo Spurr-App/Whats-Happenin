@@ -11,7 +11,7 @@ require('./server/models').connect(process.env.EPMONGO || process.env.MONGO_KEY)
 const app = express();
 // tell the app to look for static files in these directories
 app.use(express.static('./server/static/'));
-app.use(express.static('./client/dist/'));
+app.use(express.static('./client/dist'));
 // tell the app to parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: false }));
 // pass the passport middleware
@@ -40,14 +40,13 @@ app.get('/googlekey', (req, res) => {
   res.status(200).json(process.env.GOOGLE_MAP);
 });
 
+// TODO: wtf are these?
 app.post('/makeevent', (req, res) => {
-  console.log(req.body, 'event body');
   Event.createEvent(req.body);
   res.send('event made');
 });
 
 app.post('/makeevent', (req, res) => {
-  console.log(req.body, 'event body');
   req.body.attendees = {};
   Event.createEvent(req.body);
 });
@@ -59,6 +58,7 @@ app.post('/makeevent', (req, res) => {
  * @return Sets the state detailbox to the clicked event
  */
 app.get('/events', (req, res) => {
+  console.warn('getting events')
   if (!req.body.username) {
     Event.findAll().then(events => res.send(events));
   } else {
@@ -66,10 +66,16 @@ app.get('/events', (req, res) => {
   }
 });
 
-app.post('/addAttendee', (req, res) => {
-  console.log(req.params);
-  Event.findOneandUpdate({ title: req.params.title }, { attendees: { [req.param.username]: true } });
+app.delete('/deleteEvent/:id', (req, res) => {
+  console.log(req.params, 'pass it into events helper functions');
+  Event.remove({ id: req.params.id }, (err, success) => {
+    if (err) {
+      res.status(204);
+    }
+    res.status(200).send(success);
+  });
 });
+
 
 app.get('*', (req, res) => {
   res.sendFile(Path.resolve(__dirname, './server/static/index.html'));
@@ -78,5 +84,5 @@ app.get('*', (req, res) => {
 
 // start the server
 app.listen(process.env.PORT || 3000, () => {
-  console.log('Server is running on http://localhost:3000 or http://127.0.0.1:3000');
+  console.log(`Server is running on http://localhost:${process.env.PORT} or http://127.0.0.1:${process.env.PORT}`);
 });
