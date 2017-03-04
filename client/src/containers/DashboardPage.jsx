@@ -12,21 +12,14 @@ class DashboardPage extends React.Component {
         name,
       },
     };
-    /**
-   *
-   * @param {events} a list of event objects from query
-   * @returns Sets the state eventlist to the array of events
-   */
-    fetch('/events').then(events => events.json())
-    .then((events) => {
-      this.setState({
-        eventList: events,
-        detailsBox: events[0]
-      });
-    }).catch(err => console.log(err));
+    this.fetchEvents();
+
     this.setCoordinates = this.setCoordinates.bind(this);
     this.setDetailsBox = this.setDetailsBox.bind(this);
     this.setEventList = this.setEventList.bind(this);
+    this.onDeleteParent = this.onDeleteParent.bind(this);
+    this.fetchEvents = this.fetchEvents.bind(this);
+
   }
 
   /**
@@ -52,6 +45,11 @@ class DashboardPage extends React.Component {
       });
     })
     .catch(err => `Whoops: ${err}`);
+  }
+
+  onDeleteParent(id) {
+    console.log('onDeleteEvent works with id=', id)
+    this.fetchEvents();
   }
 
 
@@ -81,6 +79,22 @@ class DashboardPage extends React.Component {
   setCoordinates(location) {
     this.setState({ location });
   }
+
+  fetchEvents() {
+    /**
+   *
+   * @param {events} a list of event objects from query
+   * @returns Sets the state eventlist to the array of events
+   */
+    fetch('/events').then(events => events.json())
+    .then((events) => {
+      this.setState({
+        eventList: events,
+        detailsBox: events[0]
+      });
+    }).catch(err => console.log(err));
+  }
+
   render() {
     return (<Dashboard
       coordinates={this.state.location}
@@ -88,6 +102,7 @@ class DashboardPage extends React.Component {
       setDetBox={this.setDetailsBox}
       setEveList={this.setEventList}
       data={this.state}
+      onDeleteChild={this.onDeleteParent}
     />);
   }
 

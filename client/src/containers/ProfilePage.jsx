@@ -62,6 +62,19 @@ class ProfilePage extends React.Component {
       this.setState({ detailsBox: events[0] });
     }).catch(err => console.error(err));
   }
+  componentDidMount() {
+    /**
+   *
+   * @param {events} a list of event objects from query
+   * @returns Sets the state eventlist to the array of events
+   */
+    fetch('/deleteEvent').then(events => events.json())
+    .then((events) => {
+      this.setState({ eventList: events });
+      this.setState({ detailsBox: events[0] });
+    }).catch(err => console.error(err));
+  }
+
   /**
    *
    * @param {event} the event object a user clicks on

@@ -26,7 +26,7 @@ const Event = ({ event, event: {
   businessName,
   busLink,
   location,
-}, setCoordinates, setDetailsBox }) => {
+}, setCoordinates, setDetailsBox, onDeleteParent }) => {
 /* setDetailsBox passed down from mappage
  * @param {props.event} an event item
  * @returns sets the Event details box to this event
@@ -40,35 +40,19 @@ const Event = ({ event, event: {
     setCoordinates(coordinates);
   }
 
-  function removeEventChild() {
+  function onDeleteChild() {
+    onDeleteParent(event._id);
     console.log(event, 'removeEventChild')
       var url = '/deleteEvent/' + event._id;
       return fetch(url, {
           method: 'DELETE',
-          // params: {event: event._id}
       })
       .then(res => res)
+      //trigger function in parent component
+      // this.props.onDeleteParent.bind(null, this.props.event._id)
+      // removeEventParent();
     }
 
-  // function removeEventChild() {
-  //   // make database call using fetch;
-  //   // if does not automatically update page, either change state, or force refreh
-  //   console.log(event, 'removeEvent Child event.id')
-  //   fetch('/deleteEvent/:id', { method: 'DELETE',
-  //     // params: { id: event._id }
-  //     params: _id
-  //
-  //     // { id: ':id' }
-  //   }).then((err, eventObject) => {
-  //     if(err) throw err;
-  //     console.log(eventObject)
-  //     if (eventObject) {
-  //       console.log('DELETED at removeEventChild');
-  //     }
-  //   });
-//     url = `${API_URL}/${resource}/${params.id}`;
-// options.method = 'DELETE';
-  // }
   const addAttendee = function addAttendee() {
     fetch('/addAttendee', { method: 'POST',
       params: { username: localStorage.getItem('email'), event: title }
@@ -82,7 +66,7 @@ const Event = ({ event, event: {
     <article className="eventdetail">
       <div className="eventlistbox">
         <button type="button" onClick={setDetBox}>{title}</button>
-        <button type="button" onClick={removeEventChild}>Remove ME</button>
+        <button type="button" onClick={onDeleteChild}>Remove ME</button>
         {/* <button type="button" onClick={addAttendee}>Attend Attendee</button> */}
         <div>Poster: {username}</div>
         {/* <div>Number of Attendees: {event.attendees}</div> */}
