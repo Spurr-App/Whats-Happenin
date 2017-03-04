@@ -131,14 +131,13 @@ const EventForm = ({
     </form>;
 
 EventForm.propTypes = {
-  eventDetails: React.PropTypes.object.isRequired,
+  eventDetails: React.PropTypes.shape({}).isRequired,
   eveChange: React.PropTypes.func.isRequired,
   processForm: React.PropTypes.func.isRequired,
   handleTime: React.PropTypes.func.isRequired,
   handleDate: React.PropTypes.func.isRequired,
-  closeDrawer: React.PropTypes.func.isRequired,
-  location: React.PropTypes.object.isRequired,
-  errors: React.PropTypes.object.isRequired,
+  location: React.PropTypes.shape({}).isRequired,
+  errors: React.PropTypes.shape({}).isRequired,
 };
 
 export default EventForm;

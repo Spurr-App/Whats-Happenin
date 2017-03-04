@@ -1,24 +1,20 @@
 import React from 'react';
 import { CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
+import Dashboard from './DashboardPage.jsx';
 import Auth from '../modules/Auth.js';
 import Map from '../components/subcomponents/Map.jsx';
 import Icon from '../components/subcomponents/Icons.jsx';
 import EventDetail from '../components/subcomponents/EventDetail.jsx';
 import EventList from '../components/subcomponents/EventList.jsx';
 import Stepper from '../components/subcomponents/Stepper.jsx';
-import Dropzone from '../components/subcomponents/DropZone.jsx';
 
-
-const hidden = {
-  display: 'none'
-}
-
-class ProfilePage extends React.Component {
+class ProfilePage extends Dashboard {
   constructor(props) {
     super(props);
+    console.log(this);
     this.state = {
-      open: true,
+      viewForm: false,
       eventList: [],
       detailsBox: {
         name,
@@ -73,13 +69,13 @@ class ProfilePage extends React.Component {
    * @param {event} the event object a user clicks on
    * @return Sets the state detailbox to the clicked event
    */
-  setDetailsBox(detailsBox) {
-    this.setState({ detailsBox });
-  }
+  // setDetailsBox(detailsBox) {
+  //   this.setState({ detailsBox });
+  // }
 
-  setCoordinates(coordinates) {
-    this.setState({ location: coordinates });
-  }
+  // setCoordinates(coordinates) {
+  //   this.setState({ location: coordinates });
+  // }
   /**
    * Change the eventDetails object.
    *
@@ -191,9 +187,9 @@ class ProfilePage extends React.Component {
     .catch(err => `Whoops: ${err}`);
   }
 
-  handleToggle() {
-    this.setState({ open: !this.state.open });
-  }
+  // handleToggle() {
+  //   this.setState({ viewForm: !this.state.viewForm });
+  // }
 
   render() {
     return (
@@ -208,7 +204,11 @@ class ProfilePage extends React.Component {
           <Map coordinates={this.state.location} geoCode={this.setCoordinates} />
 
           {/* SELECTED EVENT */}
-          <EventDetail event={this.state.detailsBox} setCoordinates={this.setCoordinates} />
+          <EventDetail
+            event={this.state.detailsBox}
+            linkToCalender={this.linkToCalender}
+            setCoordinates={this.setCoordinates}
+          />
         </section>
 
         {/* RIGHT SIDE */}
@@ -229,7 +229,7 @@ class ProfilePage extends React.Component {
 
           {/* STEPPER FORM */}
           <Stepper
-            open={this.state.open}
+            view={this.state.viewForm}
             errors={this.state.errors}
             closeDrawer={this.handleToggle}
             eventDetails={this.state.eventDetails}
@@ -242,11 +242,11 @@ class ProfilePage extends React.Component {
 
           {/* EVENT LIST */}
           <EventList
-            open={this.state.open}
+            view={this.state.viewForm}
             setCoordinates={this.setCoordinates}
             eventList={this.state.eventList}
             setDetailsBox={this.setDetailsBox}
-            // deleteEvent={deleteEvent}
+            deleteEvent={this.deleteEvent}
           />
 
         </div>

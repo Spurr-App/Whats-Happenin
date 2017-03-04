@@ -63,7 +63,7 @@ const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
 );
 
 Event.propTypes = {
-  event: PropTypes.object.isRequired,
+  event: React.PropTypes.shape({}).isRequired,
   deleteEvent: PropTypes.func.isRequired,
   setDetailsBox: PropTypes.func.isRequired,
   setCoordinates: PropTypes.func.isRequired

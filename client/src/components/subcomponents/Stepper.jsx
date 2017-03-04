@@ -1,6 +1,6 @@
 import React from 'react';
 // import DropZone from 'react-dropzone';
-import {Step, Stepper, StepButton, StepContent} from 'material-ui/Stepper';
+import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
@@ -13,8 +13,6 @@ const style = {
   width: '100%',
 };
 
-const iconColor = '#EEF3AD';
-
 class VerticalNonLinear extends React.Component {
 
   constructor(props) {
@@ -22,15 +20,9 @@ class VerticalNonLinear extends React.Component {
     this.state = {
       stepIndex: 0,
       open: false,
-    }
-
+    };
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
-    this.test = this.test.bind(this);
-  }
-
-  test() {
-    console.log('hey');
   }
 
   handleNext() {
@@ -85,7 +77,7 @@ class VerticalNonLinear extends React.Component {
           activeStep={stepIndex}
           linear={false}
           orientation="vertical"
-          style={this.props.open ? {} : { display: 'none' }}
+          style={this.props.view ? {} : { display: 'none' }}
         >
           {/* EVENT NAME */}
           <Step>
@@ -93,7 +85,7 @@ class VerticalNonLinear extends React.Component {
               onTouchTap={() => this.setState({ stepIndex: 4 })}
               icon={<Icon.note />}
             >
-              What's your party called?
+              What&apos;s your party called?
             </StepButton>
             <StepContent>
               <TextField
@@ -280,14 +272,27 @@ class VerticalNonLinear extends React.Component {
 }
 
 VerticalNonLinear.propTypes = {
-  eventDetails: React.PropTypes.object.isRequired,
+  eventDetails: React.PropTypes.shape({
+    username: React.PropTypes.string,
+    title: React.PropTypes.string,
+    eventTime: React.PropTypes.string,
+    eventDate: React.PropTypes.string,
+    tags: React.PropTypes.string,
+    businessName: React.PropTypes.string,
+    picLink: React.PropTypes.string,
+    busLink: React.PropTypes.string,
+    description: React.PropTypes.string,
+  }).isRequired,
   eveChange: React.PropTypes.func.isRequired,
   processForm: React.PropTypes.func.isRequired,
   handleTime: React.PropTypes.func.isRequired,
   handleDate: React.PropTypes.func.isRequired,
-  closeDrawer: React.PropTypes.func.isRequired,
-  location: React.PropTypes.object.isRequired,
-  errors: React.PropTypes.object.isRequired,
+  location: React.PropTypes.shape({
+    longitude: React.PropTypes.string,
+    latitude: React.PropTypes.string,
+    address: React.PropTypes.string,
+  }).isRequired,
+  errors: React.PropTypes.shape({}).isRequired,
 };
 
 export default VerticalNonLinear;

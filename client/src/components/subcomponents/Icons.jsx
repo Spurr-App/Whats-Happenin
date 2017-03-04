@@ -28,7 +28,7 @@ const Icons = {
   send: Publish,
   map: Bullseye,
   star: Stars
-}
+};
 
 // import Icon from './Icons.jsx';
-export default Icons
+export default Icons;

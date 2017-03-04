@@ -55,14 +55,14 @@ class Map extends React.Component {
   }
   componentWillReceiveProps(nextprops) {
     if (nextprops.coordinates) {
-      const latitude = +nextprops.coordinates.latitude;
-      const longitude = +nextprops.coordinates.longitude;
-      const address = nextprops.coordinates.address;
+      const newLatitude = +nextprops.coordinates.latitude;
+      const newLongitude = +nextprops.coordinates.longitude;
+      const newAddress = nextprops.coordinates.address;
       this.setState({
         location: {
-          latitude: latitude,
-          longitude: longitude,
-          address: address
+          latitude: newLatitude,
+          longitude: newLongitude,
+          address: newAddress
         },
       });
     }
@@ -84,11 +84,6 @@ class Map extends React.Component {
         longitude: json.results[0].geometry.location.lng,
         address: json.results[0].formatted_address
       },
-    });
-    this.props.setCoordinates2({
-      latitude: json.results[0].geometry.location.lat,
-      longitude: json.results[0].geometry.location.lng,
-      address: json.results[0].formatted_address,
     });
   }
   /**

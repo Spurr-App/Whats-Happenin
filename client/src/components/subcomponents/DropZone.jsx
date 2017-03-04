@@ -50,4 +50,4 @@ class FileDrop extends React.Component {
   }
 
 }
-export default FileDrop
+export default FileDrop;

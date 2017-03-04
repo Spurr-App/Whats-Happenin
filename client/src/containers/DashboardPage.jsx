@@ -14,34 +14,37 @@ class DashboardPage extends React.Component {
     window.open(url);
   }
 
-  static parseCoordinates(coordString) {
-    console.log(coordString, 'this is coordString in parseCoordinates');
-    let coordinates = coordString.split('longitude');
+  static parseCoordinates(eventObj) {
+    if (!eventObj.location) {
+      return eventObj;
+    }
+    let coordinates = eventObj.location.split('longitude');
     const coordinateObj = {
       address: coordinates[0]
     };
     coordinates = coordinates[1].split(' ');
     coordinateObj.latitude = +coordinates[coordinates.length - 1];
     coordinateObj.longitude = +coordinates[1];
-
     return coordinateObj;
   }
 
   constructor(props) {
     super(props);
     this.state = {
+      viewForm: false,
       secretData: '',
       eventList: [],
       detailsBox: {
         name,
       },
     };
+    this.linkToCalender = this.constructor.linkToCalender;
     this.fetchEvents();
 
     // this.linkToCalender = this.linkToCalender.bind(this);
     // parseCoordinates = this.parseCoordinates.bind(this);
     this.setCoordinates = this.setCoordinates.bind(this);
-    this.setCoordinates2 = this.setCoordinates2.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
     this.setDetailsBox = this.setDetailsBox.bind(this);
     this.fetchEvents = this.fetchEvents.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
@@ -75,21 +78,18 @@ class DashboardPage extends React.Component {
     this.setState({ detailsBox });
   }
 
-  /*
-  *
-  * @param {location} will be a set of coordinates
-  * @returns Sets the state coordinates, for each event list member
-  * allowing for the map to be updated
-  */
-  // TODO: Make these work, they are being used in different ways, pick one
-  setCoordinates(coordString) {
-    console.log(coordString, 'this is locationUnParsed in setCoordinatesConstructo');
-    const location = this.constructor.parseCoordinates(coordString);
+  /**
+   *
+   * @param {object} eventObj : either a set of coordinates, or an event object with location key
+   * @returns {object} Sets the state coordinates, for each event list member
+   */
+  setCoordinates(eventObj) {
+    const location = this.constructor.parseCoordinates(eventObj);
     this.setState({ location });
   }
 
-  setCoordinates2(location) {
-    this.setState({ location });
+  handleToggle() {
+    this.setState({ viewForm: !this.state.viewForm });
   }
 
   /*
@@ -97,11 +97,9 @@ class DashboardPage extends React.Component {
   * @returns Sets the state eventlist to the array of events
   */
   fetchEvents() {
-    console.log('fetch events hit');
     fetch('/events')
       .then(events => events.json())
       .then((eventList) => {
-        console.log(eventList, 'these are events in fetch');
         this.setState({ eventList, detailsBox: eventList[0] });
       })
       .catch(err => console.error(err));
@@ -110,14 +108,11 @@ class DashboardPage extends React.Component {
   deleteEvent(event) {
     // TODO: this is async and should be fixed, then is not working
     const that = this;
-    console.log('this is event', event);
     fetch(`/deleteEvent/${event._id}`, {
       method: 'DELETE',
     })
-    .then((res) => {
-      console.log(res);
-      console.log(that.fetchEvents, 'this is fetch events');
-      that.fetchEvents()
+    .then(() => {
+      that.fetchEvents();
     });
     // this.fetchEvents();
     // this.fetchEvents();
@@ -128,7 +123,6 @@ class DashboardPage extends React.Component {
     return (
       <Dashboard
         setCoordinates={this.setCoordinates}
-        setCoordinates2={this.setCoordinates2}
         setDetailsBox={this.setDetailsBox}
         data={this.state}
         linkToCalender={this.constructor.linkToCalender}

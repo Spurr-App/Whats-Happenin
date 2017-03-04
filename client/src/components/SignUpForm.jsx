@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Card, CardText } from 'material-ui/Card';
+import { CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
@@ -84,8 +84,8 @@ const SignUpForm = ({
 SignUpForm.propTypes = {
   onSubmit: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,
-  errors: React.PropTypes.object.isRequired,
-  user: React.PropTypes.object.isRequired
+  errors: React.PropTypes.shape({}).isRequired,
+  user: React.PropTypes.shape({}).isRequired
 };
 
 export default SignUpForm;

@@ -11,7 +11,7 @@ const EventDetail = ({ event: {
   tags,
   businessName,
   busLink,
-}, setCoordinates, linkToCalender, event }) => (
+}, linkToCalender, event }) => (
   <article>
     <div className="left">
       <img className="image" alt="" src="" />
@@ -56,8 +56,7 @@ const EventDetail = ({ event: {
 );
 
 EventDetail.propTypes = {
-  event: PropTypes.object.isRequired,
-  setCoordinates: PropTypes.func.isRequired,
+  event: React.PropTypes.shape({}).isRequired,
   linkToCalender: PropTypes.func.isRequired
 };
 

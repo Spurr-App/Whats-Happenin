@@ -36,7 +36,7 @@ const Base = ({ children }) => (
 );
 
 Base.propTypes = {
-  children: React.PropTypes.object.isRequired,
+  children: React.PropTypes.shape({}).isRequired,
 };
 
 export default Base;
