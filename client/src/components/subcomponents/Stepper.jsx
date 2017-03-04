@@ -90,7 +90,7 @@ class VerticalNonLinear extends React.Component {
           {/* EVENT NAME */}
           <Step>
             <StepButton
-              onTouchTap={() => this.setState({ stepIndex: 0 })}
+              onTouchTap={() => this.setState({ stepIndex: 4 })}
               icon={<Icon.note />}
             >
               What's your party called?

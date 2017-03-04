@@ -8,9 +8,12 @@ yellow: #EEF3AD
 body {
   font-family: sans-serif;
   margin: 0;
-  /*color: #EEF3AD;*/
+  color: #EEF3AD;
   font-size: 16px;
-  background: #ADEBBE;
+  background: #ADEBBE url('bubbles.png') bottom;
+  background-attachment: fixed;
+  background-repeat: repeat-x;
+  /*background-position: bottom;*/
 }
 
 nav {
@@ -104,7 +107,13 @@ article {
   color: green;
 }
 
-
+#logo {
+  background: url('logo.png');
+  border: none;
+  margin: auto;
+  width: 500px;
+  height: 500px;
+}
 
 .image {
   background: url('logo.png');
@@ -124,16 +133,6 @@ sidebar {
   width: 100%;
   margin-bottom: 15px;
   background: #EEF3AD;
-}
-
-.drop {
-  height: 200px;
-  margin-bottom: 15px;
-  border: 2px dashed #EEF3AD;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 #map {

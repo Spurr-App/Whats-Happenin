@@ -2,12 +2,19 @@ import React, { PropTypes } from 'react';
 import Icon from './Icons.jsx';
 
 /**
-*
-* @param {coordinate string} will be a set of coordinates
-* @returns parsed string, allows the map to be updated with new
-* coordinates when the event location is clicked;
-*/
-
+ * @param {coordinate string} will be a set of coordinates
+ * @returns parsed string, allows the map to be updated with new
+ * coordinates when the event location is clicked;
+ */
+const parseCoordinates = function parseCoordinates(coordString) {
+  let coordinates = coordString.split('longitude');
+  const coordinateObj = {
+    address: coordinates[0]
+  };
+  coordinates = coordinates[1].split(' ');
+  coordinateObj.latitude = +coordinates[coordinates.length - 1];
+  coordinateObj.longitude = +coordinates[1];
+}
 
 const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
   title,
@@ -22,7 +29,8 @@ const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
   address.splice(-7, 7);
   address = address.join(' ');
 
-/* setDetailsBox passed down from mappage
+/**
+ * setDetailsBox passed down from mappage
  * @param {props.event} an event item
  * @returns sets the Event details box to this event
  */
@@ -60,7 +68,7 @@ const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
 
       {/* EVENT INFO */}
       <table>
-        <tbody onClick={setDetBox}>
+        <tbody>
           <tr>
             <td><Icon.star /></td>
             <td>{title}</td>

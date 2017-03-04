@@ -18,7 +18,7 @@ class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      open: true,
       eventList: [],
       detailsBox: {
         name,
@@ -103,8 +103,10 @@ class ProfilePage extends React.Component {
    * @param {date object} - the time selected through the TimePicker
    */
   handleTime(event, time) {
-    let newTime = time.toLocaleString().split(',')[1].trim();
-    newTime = `${newTime.slice(0, 4)} ${newTime.slice(newTime.length - 2)}`;
+    let newTime = time.toLocaleString().split(', ')[1];
+    const analog = newTime.slice(0, 5);
+    const ampm = newTime.slice(newTime.length - 2);
+    newTime = `${analog} ${ampm}`;
 
     const ev = this.state.eventDetails;
     ev.eventTimeObj = time;

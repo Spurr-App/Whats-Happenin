@@ -1,7 +1,6 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 
-
 class FileDrop extends React.Component {
 
   constructor(props) {
@@ -10,6 +9,15 @@ class FileDrop extends React.Component {
       files: [],
     };
     this.onDrop = this.onDrop.bind(this);
+    this.style = {
+      height: '200px',
+      marginBottom: '15px',
+      border: '2px dashed #EEF3AD',
+      borderRadius: '10px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    };
   }
 
   onDrop(goodFiles, badFiles) {
@@ -27,7 +35,7 @@ class FileDrop extends React.Component {
   render() {
     return (
       <div>
-        <Dropzone className="drop" onDrop={this.onDrop} accept="image/*">
+        <Dropzone style={this.style} onDrop={this.onDrop} accept="image/*">
           {this.state.files.length > 0 ?
             <div>
               <div className="center">
@@ -37,7 +45,6 @@ class FileDrop extends React.Component {
             </div> :
             <h1>Drop it hot</h1>}
         </Dropzone>
-
       </div>
     );
   }
