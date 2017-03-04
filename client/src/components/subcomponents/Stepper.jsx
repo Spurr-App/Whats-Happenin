@@ -29,7 +29,7 @@ class VerticalNonLinear extends React.Component {
     const { stepIndex } = this.state;
     if (stepIndex < 7) {
       this.setState({
-        stepIndex: stepIndex + 1
+        stepIndex: stepIndex + 1,
       });
     }
   }
@@ -38,7 +38,7 @@ class VerticalNonLinear extends React.Component {
     const { stepIndex } = this.state;
     if (stepIndex > 0) {
       this.setState({
-        stepIndex: stepIndex - 1
+        stepIndex: stepIndex - 1,
       });
     }
   }
@@ -61,7 +61,7 @@ class VerticalNonLinear extends React.Component {
           primary
           onTouchTap={this.handleNext}
           overlayStyle={{
-            backgroundColor: '#EEF3AD'
+            backgroundColor: '#EEF3AD',
           }}
         />
       </div>

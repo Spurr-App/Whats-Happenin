@@ -27,7 +27,7 @@ const Icons = {
   pencil: Pencil,
   send: Publish,
   map: Bullseye,
-  star: Stars
+  star: Stars,
 };
 
 // import Icon from './Icons.jsx';

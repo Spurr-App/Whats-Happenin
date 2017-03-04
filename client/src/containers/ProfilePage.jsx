@@ -166,7 +166,7 @@ class ProfilePage extends Dashboard {
       method: 'POST',
       headers: new Headers({
         'Content-type': 'application/x-www-form-urlencoded',
-        authorization: `bearer ${(Auth.getToken())}`
+        authorization: `bearer ${(Auth.getToken())}`,
       }),
       body: formData,
     }).then(res => res.json())

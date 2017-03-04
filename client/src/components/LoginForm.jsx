@@ -60,7 +60,7 @@ LoginForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   errors: React.PropTypes.shape({}).isRequired,
   successMessage: PropTypes.string.isRequired,
-  user: React.PropTypes.shape({}).isRequired
+  user: React.PropTypes.shape({}).isRequired,
 };
 
 export default LoginForm;

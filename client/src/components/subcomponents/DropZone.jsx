@@ -24,7 +24,7 @@ class FileDrop extends React.Component {
     if (goodFiles) {
       console.log('Accepted files:', goodFiles);
       this.setState({
-        files: goodFiles
+        files: goodFiles,
       });
       console.log(this.state);
     } else {

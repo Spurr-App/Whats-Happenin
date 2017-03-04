@@ -20,7 +20,7 @@ class DashboardPage extends React.Component {
     }
     let coordinates = eventObj.location.split('longitude');
     const coordinateObj = {
-      address: coordinates[0]
+      address: coordinates[0],
     };
     coordinates = coordinates[1].split(' ');
     coordinateObj.latitude = +coordinates[coordinates.length - 1];
@@ -61,8 +61,8 @@ class DashboardPage extends React.Component {
       method: 'GET',
       headers: new Headers({
         'Content-type': 'application/x-www-form-urlencoded',
-        authorization: `bearer ${(Auth.getToken())}`
-      })
+        authorization: `bearer ${(Auth.getToken())}`,
+      }),
     })
     .then(res => res.json())
     .then(data => this.setState({ secretData: data.message }))

@@ -62,7 +62,7 @@ class Map extends React.Component {
         location: {
           latitude: newLatitude,
           longitude: newLongitude,
-          address: newAddress
+          address: newAddress,
         },
       });
     }
@@ -82,7 +82,7 @@ class Map extends React.Component {
       location: {
         latitude: json.results[0].geometry.location.lat,
         longitude: json.results[0].geometry.location.lng,
-        address: json.results[0].formatted_address
+        address: json.results[0].formatted_address,
       },
     });
   }
