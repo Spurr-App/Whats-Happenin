@@ -1,17 +1,11 @@
 import React from 'react';
 // import DropZone from 'react-dropzone';
 import {Step, Stepper, StepButton, StepContent} from 'material-ui/Stepper';
-import Alarm from 'material-ui/svg-icons/action/alarm';
-import Date from 'material-ui/svg-icons/action/today';
-import Note from 'material-ui/svg-icons/action/description';
-import Location from 'material-ui/svg-icons/action/room';
-import Tag from 'material-ui/svg-icons/action/loyalty';
-import Work from 'material-ui/svg-icons/action/work';
-import Cam from 'material-ui/svg-icons/image/add-a-photo';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import DropZone from './DropZone.jsx';
+import Icon from './Icons.jsx';
 
 const style = {
   width: '100%',
@@ -100,7 +94,7 @@ class VerticalNonLinear extends React.Component {
           <Step>
             <StepButton
               onTouchTap={() => this.setState({ stepIndex: 0 })}
-              icon={<Note />}
+              icon={<Icon.note />}
             >
               What's your party called?
             </StepButton>
@@ -122,7 +116,7 @@ class VerticalNonLinear extends React.Component {
           <Step>
             <StepButton
               onTouchTap={() => this.setState({ stepIndex: 1 })}
-              icon={<Note />}
+              icon={<Icon.note />}
             >
               Talk about your event!
             </StepButton>
@@ -144,7 +138,7 @@ class VerticalNonLinear extends React.Component {
           <Step>
             <StepButton
               onTouchTap={() => this.setState({ stepIndex: 2 })}
-              icon={<Cam />}
+              icon={<Icon.cam />}
             >
               Show off
             </StepButton>
@@ -158,7 +152,7 @@ class VerticalNonLinear extends React.Component {
           <Step>
             <StepButton
               onTouchTap={() => this.setState({ stepIndex: 3 })}
-              icon={<Date />}
+              icon={<Icon.date />}
             >
               When is it happening? (date)
             </StepButton>
@@ -172,7 +166,7 @@ class VerticalNonLinear extends React.Component {
           <Step>
             <StepButton
               onTouchTap={() => this.setState({ stepIndex: 4 })}
-              icon={<Alarm />}
+              icon={<Icon.time />}
             >
               When is it happening? (time)
             </StepButton>
@@ -186,7 +180,7 @@ class VerticalNonLinear extends React.Component {
           <Step>
             <StepButton
               onTouchTap={() => this.setState({ stepIndex: 5 })}
-              icon={<Location />}
+              icon={<Icon.location />}
             >
               Where is it happening?
             </StepButton>
@@ -210,7 +204,7 @@ class VerticalNonLinear extends React.Component {
           <Step>
             <StepButton
               onTouchTap={() => this.setState({ stepIndex: 6 })}
-              icon={<Work />}
+              icon={<Icon.work />}
             >
               Are you a business?
             </StepButton>
@@ -232,7 +226,7 @@ class VerticalNonLinear extends React.Component {
           <Step>
             <StepButton
               onTouchTap={() => this.setState({ stepIndex: 7 })}
-              icon={<Tag />}
+              icon={<Icon.tag />}
             >
               Tag it up
             </StepButton>
@@ -262,6 +256,7 @@ class VerticalNonLinear extends React.Component {
             { margin: '15px 0' } :
             { display: 'none' }
           }
+          icon={<Icon.send />}
         />
 
       </div>

@@ -9,6 +9,7 @@ import EventForm from '../components/subcomponents/EventForm.jsx';
 import EventDetail from '../components/subcomponents/EventDetail.jsx';
 import Dropzone from '../components/subcomponents/DropZone.jsx';
 import Stepper from '../components/subcomponents/Stepper.jsx';
+import Icon from '../components/subcomponents/Icons.jsx';
 
 const hidden = {
   display: 'none'
@@ -218,6 +219,8 @@ class ProfilePage extends React.Component {
               'view events' :
               'create event'
             }
+            icon={this.state.open ?
+              <Icon.eye /> : <Icon.pencil />}
             onTouchTap={this.handleToggle}
             backgroundColor="#ADEBBE"
           />

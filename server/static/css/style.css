@@ -53,11 +53,11 @@ a:hover {
   text-align: center;
 }
 
-.top-bar-left {
+.left {
   float: left;
 }
 
-.top-bar-right {
+.right {
   float: right;
 }
 
@@ -109,7 +109,7 @@ article {
 .image {
   background: url('logo.png');
   background-size: 100px 100px;
-  float:left;
+  border: none;
   margin-right: 10px;
   width: 100px;
   height: 100px;

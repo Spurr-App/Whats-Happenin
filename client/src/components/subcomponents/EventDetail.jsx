@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
+import Icon from './Icons.jsx';
 
 const EventDetail = ({ event: {
+  username,
   eventTime,
   eventDate,
   title,
@@ -11,25 +13,47 @@ const EventDetail = ({ event: {
   busLink
 }, setCoordinates, linkToCalender, event }) => (
   <article className="selectedEvent">
-    {/* <img alt="" id="image" className="col-sm-2" /> */}
-    {/* <img className="image" alt="" src={picLink} /> */}
 
     <section className="eventdescription">
-      <img className="image" alt="" />
-      <br />
-      <h1>{title}</h1>
-      <div>Event Time: {eventTime}</div>
-      <div>Event Date: {eventDate}</div>
+      <div className="left">
+        <img className="image" alt="" src={picLink} />
+        <div>{tags}</div>
+        <button type="button" onClick={() => linkToCalender(event)}>
+          Add to Calender
+        </button>
+      </div>
 
-      <button type="button" onClick={() => setCoordinates(location)}>Show Location on Map</button>
+      <table>
+        <tbody>
+          <tr>
+            <td><Icon.star /></td>
+            <td>{title}</td>
+          </tr>
+          <tr>
+            <td><Icon.face /></td>
+            <td>{username}</td>
+          </tr>
+          <tr>
+            <td><Icon.time /></td>
+            <td>{eventTime}</td>
+          </tr>
+          <tr>
+            <td><Icon.date /></td>
+            <td>{eventDate}</td>
+          </tr>
+          <tr>
+            <td><Icon.location /></td>
+            <td>{location}</td>
+          </tr>
+        </tbody>
+      </table>
 
       {businessName !== '' && <div>Business: {businessName}</div>}
       {busLink !== '' && <a target="_blank" rel="noreferrer noopener" href={busLink}>Website</a>}
       <br />
 
       <p>{description}</p>
-      <div>{tags}</div>
-      <button type="button" onClick={() => linkToCalender(event)}>Add to Your Calender</button>
+
     </section>
   </article>
 );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Gmaps, Marker, InfoWindow } from 'react-gmaps';
+import Icon from './Icons.jsx';
 
 class Map extends React.Component {
 
@@ -150,7 +151,7 @@ class Map extends React.Component {
 
         {/* LOCATION INPUT */}
         <form onSubmit={this.handleSubmit} >
-          Search location:
+          <div>{<Icon.map />}</div>
           <input id="address" name="location" onChange={this.handleChange} type="text" />
           <button type="submit">
             Go
