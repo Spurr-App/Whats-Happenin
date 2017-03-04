@@ -5,7 +5,7 @@ import Map from './subcomponents/Map.jsx';
 import EventList from './subcomponents/eventList.jsx';
 
 const Dashboard = ({ data, linkToCalender, setDetailsBox, setCoordinates, setCoordinates2, deleteEvent }) => (
-  <main className="container">
+  <div id="main">
 
     {/* LEFT SIDE */}
     <section id="map">
@@ -29,7 +29,7 @@ const Dashboard = ({ data, linkToCalender, setDetailsBox, setCoordinates, setCoo
         deleteEvent={deleteEvent}
       />
     </div>
-  </main>
+  </div>
 );
 
 Dashboard.propTypes = {

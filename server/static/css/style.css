@@ -37,7 +37,20 @@ nav::after {
   clear: both;
 }
 
-.container {
+#signin-up {
+  margin: auto;
+  width: 900px;
+  padding: 15px;
+  background-color: #74BEC1;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#signin-up form > div {
+  display: block;
+}
+
+#main {
   margin: auto;
   width: 900px;
   padding: 15px;
@@ -77,6 +90,8 @@ a:hover {
   margin: auto;
   width: 500px;
   height: 500px;
+  animation-name: fadeInDown;
+  animation-duration: 1000ms;
 }
 
 .image {
@@ -116,10 +131,6 @@ article {
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
-/*.card-heading {
-  padding: 16px;
-}*/
 
 .field-line, .button-line {
   padding: 5px;

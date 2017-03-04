@@ -13,7 +13,7 @@ const LoginForm = ({
   user,
 }) => (
 
-  <Card className="container">
+  <div id="signin-up">
     <form action="/" onSubmit={onSubmit}>
       <h2>Login</h2>
 
@@ -42,12 +42,17 @@ const LoginForm = ({
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Log in" primary />
+        <RaisedButton
+          className="fullButton"
+          type="submit"
+          label="Log in"
+          primary
+        />
       </div>
 
       <CardText>Don&apos;t have an account? <Link to={'/signup'}>Create one</Link>.</CardText>
     </form>
-  </Card>
+  </div>
 );
 
 LoginForm.propTypes = {

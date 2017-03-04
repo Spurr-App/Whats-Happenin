@@ -197,7 +197,7 @@ class ProfilePage extends React.Component {
 
   render() {
     return (
-      <main className="container">
+      <div id="main">
 
         {/* LEFT SIDE */}
         <section id="map">
@@ -249,7 +249,7 @@ class ProfilePage extends React.Component {
           />
 
         </div>
-      </main>
+      </div>
     );
   }
 
