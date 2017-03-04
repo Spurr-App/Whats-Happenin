@@ -21,6 +21,10 @@ nav {
   width: 900px;
   background: #EEF3AD;
   margin:auto;
+  margin-bottom: 15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 nav a {
@@ -39,6 +43,9 @@ nav::after {
   padding: 15px;
   background-color: #516091;
   display:flex;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 a {
@@ -64,49 +71,6 @@ a:hover {
   float: right;
 }
 
-path {
-  color: #EEF3AD;
-}
-
-
-
-sidebar {
-  padding-left: 20px;
-}
-
-article {
-  padding: 10px;
-  background-color: #74BEC1;
-  margin-bottom: 15px;
-}
-
-.selectedEvent {
-  margin-bottom: 15px;
-  display: flex;
-}
-
-.selectedEvent img {
-
-}
-
-.card-heading {
-  padding: 16px;
-}
-
-.field-line, .button-line {
-  padding: 5px;
-}
-
-.error-message {
-  padding: 0 16px;
-  color: tomato;
-}
-
-.success-message {
-  padding: 0 16px;
-  color: green;
-}
-
 #logo {
   background: url('logo.png');
   border: none;
@@ -124,23 +88,55 @@ article {
   height: 100px;
 }
 
-sidebar {
-    max-height: 900px;
-    overflow-y: scroll;
+path {
+  color: #EEF3AD;
 }
 
 .fullButton {
   width: 100%;
   margin-bottom: 15px;
-  background: #EEF3AD;
 }
 
 #map {
   max-width: 500px;
+  position: fixed;
+}
+
+#sidebar {
+  padding-left: 20px;
+  position: relative;
+  left: 500px;
+  width: 380px;
+}
+
+article {
+  padding: 10px;
+  background-color: #74BEC1;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*.card-heading {
+  padding: 16px;
+}*/
+
+.field-line, .button-line {
+  padding: 5px;
+}
+
+.error-message {
+  padding: 0 16px;
+  color: tomato;
+}
+
+.success-message {
+  padding: 0 16px;
+  color: green;
 }
 
 form {
-  background-color: transparent;
+  /*background-color: transparent;*/
   padding: 10px;
   display: flex;
   justify-content: space-around;

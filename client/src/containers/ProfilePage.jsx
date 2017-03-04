@@ -212,7 +212,7 @@ class ProfilePage extends React.Component {
         </section>
 
         {/* RIGHT SIDE */}
-        <sidebar style={{ width: 400 }}>
+        <div id="sidebar">
 
           {/* EVENT BUTTON */}
           <RaisedButton
@@ -248,7 +248,7 @@ class ProfilePage extends React.Component {
             setDetailsBox={this.setDetailsBox}
           />
 
-        </sidebar>
+        </div>
       </main>
     );
   }

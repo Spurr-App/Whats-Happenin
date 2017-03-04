@@ -18,12 +18,12 @@ const parseCoordinates = function parseCoordinates(coordString) {
 
 const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
   title,
-  eventTime,
   username,
+  eventTime,
   eventDate,
-  businessName,
-  busLink,
   location,
+  // businessName,
+  // busLink,
 }, setCoordinates, setDetailsBox }) => {
   let address = location.split(' ');
   address.splice(-7, 7);
@@ -40,11 +40,6 @@ const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
     setDetailsBox(event);
   }
 
-  function setCoords() {
-    const coordinates = parseCoordinates(location);
-    setCoordinates(coordinates);
-  }
-
   const addAttendee = function addAttendee() {
     fetch('/addAttendee', { method: 'POST',
       params: { username: localStorage.getItem('email'), event: title }
@@ -55,7 +50,7 @@ const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
     });
   };
   return (
-    <article className="eventdetail">
+    <article>
       <div className="left">
         <img className="image" alt="" src="" /><br />
         <button type="button" onClick={() => setDetailsBox(event)}>

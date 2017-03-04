@@ -9,30 +9,26 @@ const Dashboard = ({ data, linkToCalender, setDetailsBox, setCoordinates, setCoo
 
     {/* LEFT SIDE */}
     <section id="map">
-      <section >
-        {/* MAP */}
-        <Map setCoordinates2={setCoordinates2} />
+      {/* MAP */}
+      <Map setCoordinates2={setCoordinates2} />
 
-        {/* SELECTED EVENT */}
-        <article id="EventDetail">
-          <EventDetail
-            setCoordinates={setCoordinates}
-            event={data.detailsBox}
-            linkToCalender={linkToCalender}
-          />
-        </article>
-      </section>
+      {/* SELECTED EVENT */}
+      <EventDetail
+        setCoordinates={setCoordinates}
+        event={data.detailsBox}
+        linkToCalender={linkToCalender}
+      />
     </section>
 
     {/* RIGHT SIDE */}
-    <sidebar className="col-lg-4">
+    <div id="sidebar">
       <EventList
         setCoordinates={setCoordinates}
         eventlist={data.eventList}
         setDetailsBox={setDetailsBox}
         deleteEvent={deleteEvent}
       />
-    </sidebar>
+    </div>
   </main>
 );
 
