@@ -1,5 +1,6 @@
 import React from 'react';
 import { Gmaps, Marker, InfoWindow } from 'react-gmaps';
+import Icon from './Icons.jsx';
 
 class Map extends React.Component {
 
@@ -130,8 +131,9 @@ class Map extends React.Component {
           lat={this.state.location.latitude}
           lng={this.state.location.longitude}
           zoom={12}
-          loadingMessage={'Be happy'}
-          params={{ v: '3.exp', key: 'AIzaSyD2dBzgWfwxju9hs5q6GHJwWeDSZoiNRH8' }}
+          style={{ borderRadius: '5px' }}
+          // loadingMessage={'Be happy'}
+          params={{ v: '3.exp', key: 'AIzaSyBRQ6rMKIjU7tsFNGxfmRhySiZXOt87Ykc' }}
           onMapCreated={this.onMapCreated}
         >
           <Marker
@@ -147,13 +149,14 @@ class Map extends React.Component {
             content={this.state.location.address}
           />
         </Gmaps>
-        <br />
 
         {/* LOCATION INPUT */}
         <form onSubmit={this.handleSubmit} >
-          Search location:
+          <div>{<Icon.map />}</div>
           <input id="address" name="location" onChange={this.handleChange} type="text" />
-          <input type="submit" value="Go" />
+          <button type="submit">
+            Go
+          </button>
         </form>
       </div>
     );

@@ -1,33 +1,64 @@
 import React, { PropTypes } from 'react';
-
-/**
-*
-* @param {coordinate string} will be a set of coordinates
-* @returns parsed string, allows the map to be updated with new
-* coordinates when the event location is clicked;
-*/
-
+import Icon from './Icons.jsx';
 
 const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
   title,
-  eventTime,
   username,
+  eventTime,
   eventDate,
-  businessName,
-  busLink,
   location,
+  // businessName,
+  // busLink,
 } }) => (
-  <article className="eventdetail">
-    <div className="eventlistbox">
-      <button type="button" onClick={() => setDetailsBox(event)}>{title}</button>
-      <button type="button" onClick={() => deleteEvent(event)}>Remove ME</button>
-      <div>Poster: {username}</div>
-      <div>Event Time: {eventTime}</div>
-      <div>Event Date: {eventDate}</div>
-      <button type="button" onClick={() => setCoordinates(location)}>Location: {location}</button>
-      {businessName !== '' && <div>Business: {businessName}</div>}
-      {busLink !== '' && <a target="_blank" rel="noreferrer noopener" href={busLink}>Website</a>}
+  <article>
+    <div className="left center">
+      <img className="image" alt="" src="" />
+      <br />
+      <button type="button" onClick={() => setDetailsBox(event)}>
+        View Event
+      </button>
+      <br />
+      <button type="button" onClick={() => setCoordinates(event)}>
+        View Location
+      </button>
+      <br />
+      <button type="button" onClick={() => deleteEvent(event)}>
+        Remove Event
+      </button>
     </div>
+
+    {/* EVENT INFO */}
+    <table>
+      <tbody>
+        <tr>
+          <td><Icon.star /></td>
+          <td>{title}</td>
+        </tr>
+        <tr>
+          <td><Icon.face /></td>
+          <td>{username}</td>
+        </tr>
+        <tr>
+          <td><Icon.time /></td>
+          <td>{eventTime}</td>
+        </tr>
+        <tr>
+          <td><Icon.date /></td>
+          <td>{eventDate}</td>
+        </tr>
+        <tr>
+          <td><Icon.location /></td>
+          <td>{location}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    {/* {businessName !== '' && <div>Business: {businessName}</div>}
+
+    {busLink !== '' && <a target="_blank" rel="noreferrer noopener"
+    href={busLink}>Website</a>} */}
+
   </article>
 );
 

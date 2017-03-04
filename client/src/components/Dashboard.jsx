@@ -2,41 +2,34 @@ import React, { PropTypes } from 'react';
 import { Card } from 'material-ui/Card';
 import EventDetail from './subcomponents/EventDetail.jsx';
 import Map from './subcomponents/Map.jsx';
-import EventList from './subcomponents/eventList.jsx';
+import EventList from './subcomponents/EventList.jsx';
 
 const Dashboard = ({ data, linkToCalender, setDetailsBox, setCoordinates, setCoordinates2, deleteEvent }) => (
-  <Card className="container">
-    <div>
-      <section id="main">
-        <section id="map" className="col-lg-4">
-          <section >
+  <div id="main">
 
-            {/* MAP */}
-            <Map setCoordinates2={setCoordinates2} />
+    {/* LEFT SIDE */}
+    <section id="map">
+      {/* MAP */}
+      <Map setCoordinates2={setCoordinates2} />
 
-            {/* SELECTED EVENT */}
-            <article id="EventDetail">
-              <EventDetail
-                setCoordinates={setCoordinates}
-                event={data.detailsBox}
-                linkToCalender={linkToCalender}
-              />
-            </article>
-          </section>
-        </section>
+      {/* SELECTED EVENT */}
+      <EventDetail
+        setCoordinates={setCoordinates}
+        event={data.detailsBox}
+        linkToCalender={linkToCalender}
+      />
+    </section>
 
-        {/* SIDEBAR */}
-        <sidebar className="col-lg-4">
-          <EventList
-            setCoordinates={setCoordinates}
-            eventlist={data.eventList}
-            setDetailsBox={setDetailsBox}
-            deleteEvent={deleteEvent}
-          />
-        </sidebar>
-      </section>
-    </div>)
-  </Card>
+    {/* RIGHT SIDE */}
+    <div id="sidebar">
+      <EventList
+        setCoordinates={setCoordinates}
+        eventList={data.eventList}
+        setDetailsBox={setDetailsBox}
+        deleteEvent={deleteEvent}
+      />
+    </div>
+  </div>
 );
 
 Dashboard.propTypes = {

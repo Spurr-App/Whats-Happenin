@@ -13,9 +13,9 @@ const LoginForm = ({
   user,
 }) => (
 
-  <Card className="container">
+  <div id="signin-up">
     <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Login</h2>
+      <h2>Login</h2>
 
       {successMessage && <p className="success-message">{successMessage}</p>}
       {errors.summary && <p className="error-message">{errors.summary}</p>}
@@ -42,12 +42,17 @@ const LoginForm = ({
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Log in" primary />
+        <RaisedButton
+          className="fullButton"
+          type="submit"
+          label="Log in"
+          primary
+        />
       </div>
 
       <CardText>Don&apos;t have an account? <Link to={'/signup'}>Create one</Link>.</CardText>
     </form>
-  </Card>
+  </div>
 );
 
 LoginForm.propTypes = {

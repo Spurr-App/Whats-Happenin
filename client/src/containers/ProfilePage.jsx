@@ -1,20 +1,24 @@
 import React from 'react';
 import { CardText } from 'material-ui/Card';
-import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
 import Auth from '../modules/Auth.js';
 import Map from '../components/subcomponents/Map.jsx';
-import EventList from '../components/subcomponents/eventList.jsx';
-import EventForm from '../components/subcomponents/EventForm.jsx';
+import Icon from '../components/subcomponents/Icons.jsx';
 import EventDetail from '../components/subcomponents/EventDetail.jsx';
-import Dropzone from '../components/subcomponents/DropZone.jsx';
+import EventList from '../components/subcomponents/EventList.jsx';
 import Stepper from '../components/subcomponents/Stepper.jsx';
+import Dropzone from '../components/subcomponents/DropZone.jsx';
+
+
+const hidden = {
+  display: 'none'
+}
 
 class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      open: true,
       eventList: [],
       detailsBox: {
         name,
@@ -99,8 +103,10 @@ class ProfilePage extends React.Component {
    * @param {date object} - the time selected through the TimePicker
    */
   handleTime(event, time) {
-    let newTime = time.toLocaleString().split(',')[1].trim();
-    newTime = `${newTime.slice(0, 4)} ${newTime.slice(newTime.length - 2)}`;
+    let newTime = time.toLocaleString().split(', ')[1];
+    const analog = newTime.slice(0, 5);
+    const ampm = newTime.slice(newTime.length - 2);
+    newTime = `${analog} ${ampm}`;
 
     const ev = this.state.eventDetails;
     ev.eventTimeObj = time;
@@ -135,6 +141,7 @@ class ProfilePage extends React.Component {
    * @return Sets the state successMessage to the returned message if successful
    */
   processEventForm(event) {
+    console.log(event);
     event.preventDefault();
     const eveDet = this.state.eventDetails;
     eveDet.location = {
@@ -190,72 +197,62 @@ class ProfilePage extends React.Component {
 
   render() {
     return (
-      <main className="container">
-        <div id="main">
-          <section id="map">
-            {this.state.successMessage &&
-              <CardText className="success-message">{this.state.successMessage}</CardText>}
+      <div id="main">
 
-            <Drawer
-              openSecondary
-              open={this.state.open}
-              width={400}
-            >
-              <EventForm
-                errors={this.state.errors}
-                closeDrawer={this.handleToggle}
-                eventDetails={this.state.eventDetails}
-                eveChange={this.changeEvent}
-                processForm={this.processEventForm}
-                handleTime={this.handleTime}
-                handleDate={this.handleDate}
-                location={this.state.location}
-              />
-            </Drawer>
+        {/* LEFT SIDE */}
+        <section id="map">
+          {this.state.successMessage &&
+            <CardText className="success-message">{this.state.successMessage}</CardText>}
 
-            {/* MAP AND LOCATION FORM */}
-            <Map coordinates={this.state.location} setCoordinates2={this.setCoordinates} />
+          {/* MAP */}
+          <Map coordinates={this.state.location} geoCode={this.setCoordinates} />
 
-            {/* SELECTED EVENT */}
-            {/* <EventDetail event={this.state.detailsBox} setCoordinates={this.setCoordinates} /> */}
-          </section>
+          {/* SELECTED EVENT */}
+          <EventDetail event={this.state.detailsBox} setCoordinates={this.setCoordinates} />
+        </section>
 
-          {/* SIDEBAR */}
-          <sidebar className="col-lg-4">
+        {/* RIGHT SIDE */}
+        <div id="sidebar">
 
-            {/* EVENT BUTTON */}
-            <RaisedButton
-              className="fullButton"
-              label="make event"
-              onTouchTap={this.handleToggle}
-            />
+          {/* EVENT BUTTON */}
+          <RaisedButton
+            className="fullButton"
+            label={this.state.open ?
+              'view events' :
+              'create event'
+            }
+            icon={this.state.open ?
+              <Icon.eye /> : <Icon.pencil />}
+            onTouchTap={this.handleToggle}
+            backgroundColor="#ADEBBE"
+          />
 
-            {/* DROPZONE */}
-            {/* <Dropzone /> */}
+          {/* STEPPER FORM */}
+          <Stepper
+            open={this.state.open}
+            errors={this.state.errors}
+            closeDrawer={this.handleToggle}
+            eventDetails={this.state.eventDetails}
+            eveChange={this.changeEvent}
+            processForm={this.processEventForm}
+            handleTime={this.handleTime}
+            handleDate={this.handleDate}
+            location={this.state.location}
+          />
 
-            {/* UPLOAD BUTTON */}
-            {/* <RaisedButton
-              className="fullButton"
-              label="upload image"
-              onTouchTap={this.handleToggle}
-            /> */}
+          {/* EVENT LIST */}
+          <EventList
+            open={this.state.open}
+            setCoordinates={this.setCoordinates}
+            eventList={this.state.eventList}
+            setDetailsBox={this.setDetailsBox}
+            // deleteEvent={deleteEvent}
+          />
 
-            {/* EVENT LIST */}
-            {/* <EventList
-              setCoordinates={this.setCoordinates}
-              eventlist={this.state.eventList}
-              setDetailsBox={this.setDetailsBox}
-            /> */}
-
-            {/* STEPPER FORM */}
-            <Stepper />
-
-          </sidebar>
         </div>
-      </main>
+      </div>
     );
   }
-
 }
 
 export default ProfilePage;

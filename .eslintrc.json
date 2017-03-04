@@ -11,9 +11,11 @@
     "import"
   ],
   "rules": {
+    "react/prop-types": 0,
     "semi": [1, "always"],
     "comma-dangle": [0, "never"],
-    "no-underscore-dangle": 0
+    "no-underscore-dangle": 0,
+    "no-console": 0
   }
 
 }

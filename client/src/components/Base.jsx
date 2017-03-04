@@ -6,14 +6,14 @@ import Auth from '../modules/Auth';
 const Base = ({ children }) => (
   <div>
     <nav>
-      <div className="top-bar-left">
+      <div className="left">
         <IndexLink to="/">
         What&apos;s Happenin&apos;
         </IndexLink>
       </div>
 
       {Auth.isUserAuthenticated() ? (
-        <div className="top-bar-right">
+        <div className="right">
           <IndexLink activeClassName="active" to="/">
             Events
           </IndexLink>
@@ -21,7 +21,7 @@ const Base = ({ children }) => (
           <Link to="/logout">Log out</Link>
         </div>
       ) : (
-        <div className="top-bar-right">
+        <div className="right">
           <Link to="/login">Log in</Link>
           <Link to="/signup">Sign up</Link>
         </div>

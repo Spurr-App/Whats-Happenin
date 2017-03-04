@@ -11,10 +11,10 @@ const SignUpForm = ({
   errors,
   user,
 }) => (
-  <Card className="container">
+  <div id="signin-up">
     <form action="/" onSubmit={onSubmit}>
       <h1 className="welcome text-center">Welcome to What&apos;s Happenin&apos;</h1>
-      <h2 className="card-heading">Sign Up</h2>
+      <h2>Sign Up</h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
@@ -78,7 +78,7 @@ const SignUpForm = ({
 
       <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
     </form>
-  </Card>
+  </div>
 );
 
 SignUpForm.propTypes = {

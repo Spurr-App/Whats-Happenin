@@ -1,24 +1,36 @@
 import React from 'react';
 // import DropZone from 'react-dropzone';
-import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper';
+import {Step, Stepper, StepButton, StepContent} from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import TimePicker from 'material-ui/TimePicker';
+import DatePicker from 'material-ui/DatePicker';
 import DropZone from './DropZone.jsx';
+import Icon from './Icons.jsx';
 
 const style = {
   width: '100%',
 };
 
+const iconColor = '#EEF3AD';
+
 class VerticalNonLinear extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      stepIndex: 0
-    };
+      stepIndex: 0,
+      open: false,
+    }
+
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
+    this.test = this.test.bind(this);
+  }
+
+  test() {
+    console.log('hey');
   }
 
   handleNext() {
@@ -41,26 +53,25 @@ class VerticalNonLinear extends React.Component {
 
   renderStepActions(step) {
     return (
-      <div
-        style={{
-          margin: '12px 0'
-        }}
-      >
+      <div style={{ margin: '12px 0', float: 'right' }}>
+        { step > 0 && (
+          <FlatButton
+            label="Back"
+            disableTouchRipple
+            disableFocusRipple
+            onTouchTap={this.handlePrev}
+            style={{ margin: '0 12px' }}
+          />) }
         <RaisedButton
           label="Next"
           disableTouchRipple
           disableFocusRipple
           primary
           onTouchTap={this.handleNext}
-          style={{ marginRight: 12
+          overlayStyle={{
+            backgroundColor: '#EEF3AD'
           }}
-        /> {step > 0 && (
-          <FlatButton
-            label="Back"
-            disableTouchRipple
-            disableFocusRipple
-            onTouchTap={this.handlePrev}
-          />)}
+        />
       </div>
     );
   }
@@ -69,18 +80,20 @@ class VerticalNonLinear extends React.Component {
     const { stepIndex } = this.state;
 
     return (
-      <div
-        style={{
-          width: 400,
-          maxHeight: 400,
-          margin: 'auto'
-        }}
-      >
-        <Stepper activeStep={stepIndex} linear={false} orientation="vertical">
+      <div style={{ width: 380 }}>
+        <Stepper
+          activeStep={stepIndex}
+          linear={false}
+          orientation="vertical"
+          style={this.props.open ? {} : { display: 'none' }}
+        >
           {/* EVENT NAME */}
           <Step>
-            <StepButton onTouchTap={() => this.setState({ stepIndex: 0 })}>
-              What&apos; your party called?
+            <StepButton
+              onTouchTap={() => this.setState({ stepIndex: 4 })}
+              icon={<Icon.note />}
+            >
+              What's your party called?
             </StepButton>
             <StepContent>
               <TextField
@@ -88,9 +101,9 @@ class VerticalNonLinear extends React.Component {
                 type="title"
                 hintText="Name"
                 style={style}
-                // value={eventDetails.title}
-                // onChange={eveChange}
-                // errorText={errors.title}
+                value={this.props.eventDetails.title}
+                onChange={this.props.eveChange}
+                errorText={this.props.errors.title}
               />
               {this.renderStepActions(0)}
             </StepContent>
@@ -98,8 +111,11 @@ class VerticalNonLinear extends React.Component {
 
           {/* ABOUT */}
           <Step>
-            <StepButton onTouchTap={() => this.setState({ stepIndex: 1 })}>
-              Tells about your event!
+            <StepButton
+              onTouchTap={() => this.setState({ stepIndex: 1 })}
+              icon={<Icon.note />}
+            >
+              Talk about your event!
             </StepButton>
             <StepContent>
               <TextField
@@ -108,8 +124,8 @@ class VerticalNonLinear extends React.Component {
                 type="description"
                 hintText="Describe your sweet event"
                 style={style}
-                // value={eventDetails.description}
-                // onChange={eveChange}
+                value={this.props.eventDetails.description}
+                onChange={this.props.eveChange}
               />
               {this.renderStepActions(1)}
             </StepContent>
@@ -117,7 +133,10 @@ class VerticalNonLinear extends React.Component {
 
           {/* EVENT IMAGE */}
           <Step>
-            <StepButton onTouchTap={() => this.setState({ stepIndex: 2 })}>
+            <StepButton
+              onTouchTap={() => this.setState({ stepIndex: 2 })}
+              icon={<Icon.cam />}
+            >
               Show off
             </StepButton>
             <StepContent>
@@ -128,30 +147,56 @@ class VerticalNonLinear extends React.Component {
 
           {/* EVENT DATE */}
           <Step>
-            <StepButton onTouchTap={() => this.setState({ stepIndex: 3 })}>
-              Whens it happening? (date)
+            <StepButton
+              onTouchTap={() => this.setState({ stepIndex: 3 })}
+              icon={<Icon.date />}
+            >
+              When is it happening? (date)
             </StepButton>
             <StepContent>
-
+              <DatePicker
+                type="eventDate"
+                hintText="Date"
+                name="eventDate"
+                style={style}
+                mode="landscape"
+                onChange={this.props.handleDate}
+                value={this.props.eventDetails.eventDateObj}
+                errorText={this.props.errors.eventDate}
+              />
               {this.renderStepActions(3)}
             </StepContent>
           </Step>
 
           {/* EVENT TIME */}
           <Step>
-            <StepButton onTouchTap={() => this.setState({ stepIndex: 4 })}>
-              Whens it happening? (time)
+            <StepButton
+              onTouchTap={() => this.setState({ stepIndex: 4 })}
+              icon={<Icon.time />}
+            >
+              When is it happening? (time)
             </StepButton>
             <StepContent>
-
+              <TimePicker
+                name="eventTime"
+                type="eventTime"
+                hintText="Time"
+                style={style}
+                onChange={this.props.handleTime}
+                value={this.props.eventDetails.eventTimeObj}
+                errorText={this.props.errors.eventTime}
+              />
               {this.renderStepActions(4)}
             </StepContent>
           </Step>
 
           {/* EVENT LOCATION */}
           <Step>
-            <StepButton onTouchTap={() => this.setState({ stepIndex: 5 })}>
-              Where&apos; it happening?
+            <StepButton
+              onTouchTap={() => this.setState({ stepIndex: 5 })}
+              icon={<Icon.location />}
+            >
+              Where is it happening?
             </StepButton>
             <StepContent>
               <TextField
@@ -161,11 +206,9 @@ class VerticalNonLinear extends React.Component {
                 type="location"
                 hintText="Where"
                 style={style}
-                // value={`${location.address} \
-                // longitude: ${location.longitude}, \
-                // latitude: ${location.latitude}`}
-                // onChange={eveChange}
-                // errorText={errors.location}
+                value={this.props.location.address}
+                onChange={this.props.eveChange}
+                errorText={this.props.errors.location}
               />
               {this.renderStepActions(5)}
             </StepContent>
@@ -173,7 +216,10 @@ class VerticalNonLinear extends React.Component {
 
           {/* BUSINESS WEBSITE */}
           <Step>
-            <StepButton onTouchTap={() => this.setState({ stepIndex: 6 })}>
+            <StepButton
+              onTouchTap={() => this.setState({ stepIndex: 6 })}
+              icon={<Icon.work />}
+            >
               Are you a business?
             </StepButton>
             <StepContent>
@@ -182,9 +228,9 @@ class VerticalNonLinear extends React.Component {
                 type="busLink"
                 hintText="Promote your business' website"
                 style={style}
-                // value={eventDetails.busLink}
-                // onChange={eveChange}
-                // errorText={errors.busLink}
+                value={this.props.eventDetails.busLink}
+                onChange={this.props.eveChange}
+                errorText={this.props.errors.busLink}
               />
               {this.renderStepActions(6)}
             </StepContent>
@@ -192,7 +238,10 @@ class VerticalNonLinear extends React.Component {
 
           {/* TAGS */}
           <Step>
-            <StepButton onTouchTap={() => this.setState({ stepIndex: 7 })}>
+            <StepButton
+              onTouchTap={() => this.setState({ stepIndex: 7 })}
+              icon={<Icon.tag />}
+            >
               Tag it up
             </StepButton>
             <StepContent>
@@ -202,8 +251,8 @@ class VerticalNonLinear extends React.Component {
                 type="tags"
                 hintText="tags"
                 style={style}
-                // value={eventDetails.tags}
-                // onChange={eveChange}
+                value={this.props.eventDetails.tags}
+                onChange={this.props.eveChange}
               />
               {this.renderStepActions(7)}
             </StepContent>
@@ -212,10 +261,33 @@ class VerticalNonLinear extends React.Component {
         </Stepper>
 
         {/* SUBMIT BUTTON */}
-        <RaisedButton label="Submit Event" className="fullButton" />
+        <RaisedButton
+          onTouchTap={this.props.processForm}
+          className="fullButton"
+          label="Submit Event"
+          backgroundColor="#ADEBBE"
+          style={
+            this.props.open ?
+            { margin: '15px 0' } :
+            { display: 'none' }
+          }
+          icon={<Icon.send />}
+        />
+
       </div>
     );
   }
 }
+
+VerticalNonLinear.propTypes = {
+  eventDetails: React.PropTypes.object.isRequired,
+  eveChange: React.PropTypes.func.isRequired,
+  processForm: React.PropTypes.func.isRequired,
+  handleTime: React.PropTypes.func.isRequired,
+  handleDate: React.PropTypes.func.isRequired,
+  closeDrawer: React.PropTypes.func.isRequired,
+  location: React.PropTypes.object.isRequired,
+  errors: React.PropTypes.object.isRequired,
+};
 
 export default VerticalNonLinear;
