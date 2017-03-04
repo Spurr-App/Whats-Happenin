@@ -2,6 +2,18 @@ import React from 'react';
 import Auth from '../modules/Auth.js';
 import Dashboard from '../components/Dashboard.jsx';
 
+const parseCoordinates = function parseCoordinates(coordString) {
+  let coordinates = coordString.split('longitude');
+  const coordinateObj = {
+    address: coordinates[0]
+  };
+  coordinates = coordinates[1].split(' ');
+  coordinateObj.latitude = +coordinates[coordinates.length - 1];
+  coordinateObj.longitude = +coordinates[1];
+
+  return coordinateObj;
+};
+
 class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
@@ -66,7 +78,8 @@ class DashboardPage extends React.Component {
   * @returns Sets the state coordinates, for each event list member
   * allowing for the map to be updated
   */
-  setCoordinates(location) {
+  setCoordinates(locationUnParsed) {
+    const location = parseCoordinates(locationUnParsed);
     this.setState({ location });
   }
 

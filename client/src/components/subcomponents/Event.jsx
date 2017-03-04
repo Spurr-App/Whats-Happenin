@@ -6,17 +6,7 @@ import React, { PropTypes } from 'react';
 * @returns parsed string, allows the map to be updated with new
 * coordinates when the event location is clicked;
 */
-const parseCoordinates = function parseCoordinates(coordString) {
-  let coordinates = coordString.split('longitude');
-  const coordinateObj = {
-    address: coordinates[0]
-  };
-  coordinates = coordinates[1].split(' ');
-  coordinateObj.latitude = +coordinates[coordinates.length - 1];
-  coordinateObj.longitude = +coordinates[1];
 
-  return coordinateObj;
-};
 
 const Event = ({ event, event: {
   title,
@@ -27,25 +17,13 @@ const Event = ({ event, event: {
   busLink,
   location,
 }, setCoordinates, setDetailsBox, fetchEvents }) => {
-/* setDetailsBox passed down from mappage
- * @param {props.event} an event item
- * @returns sets the Event details box to this event
- */
-  function setDetBox() {
-    setDetailsBox(event);
-  }
-
-  function setCoords() {
-    const coordinates = parseCoordinates(location);
-    setCoordinates(coordinates);
-  }
 
   function onDeleteChild() {
     fetch(`/deleteEvent/${event._id}`, {
       method: 'DELETE',
     })
     .then(() => fetchEvents());
-    fetchEvents();
+    // fetchEvents();
   }
 
   // function addAttendee() {
@@ -61,14 +39,14 @@ const Event = ({ event, event: {
   return (
     <article className="eventdetail">
       <div className="eventlistbox">
-        <button type="button" onClick={setDetBox}>{title}</button>
+        <button type="button" onClick={() => setDetailsBox(event)}>{title}</button>
         <button type="button" onClick={onDeleteChild}>Remove ME</button>
         {/* <button type="button" onClick={addAttendee}>Attend Attendee</button> */}
         <div>Poster: {username}</div>
         {/* <div>Number of Attendees: {event.attendees}</div> */}
         <div>Event Time: {eventTime}</div>
         <div>Event Date: {eventDate}</div>
-        <button type="button" onClick={setCoords}>Location: {location}</button>
+        <button type="button" onClick={() => setCoordinates(location)}>Location: {location}</button>
         {businessName !== '' && <div>Business: {businessName}</div>}
         {busLink !== '' && <a target="_blank" rel="noreferrer noopener" href={busLink}>Website</a>}
       </div>
