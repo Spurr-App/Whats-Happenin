@@ -4,10 +4,10 @@
 
 /node_modules
 /config
-/client/dist
-/client/dist/js
-/client/dist/js/app.js
-
+# /client/dist
+# /client/dist/js
+# /client/dist/js/app.js
+/client/src
 
 # testing
 /coverage
@@ -24,4 +24,3 @@ yarn-debug.log*
 yarn-error.log*
 
 .eslintrc.js
-/client/dist
