@@ -7,7 +7,7 @@
 # /client/dist
 # /client/dist/js
 # /client/dist/js/app.js
-/client/src
+# /client/src
 
 # testing
 /coverage
@@ -16,7 +16,7 @@
 /build
 
 # misc
-# *.xcf
+*.xcf
 .DS_Store
 .env
 npm-debug.log*
