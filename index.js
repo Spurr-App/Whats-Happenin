@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const Event = require('./server/controllers/events');
 const Path = require('path');
-const User = require('./server/models/user.js');
+
+const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 // connect to the database and load models
 require('./server/models').connect(process.env.EPMONGO || process.env.MONGO_KEY);
@@ -46,11 +47,6 @@ app.post('/makeevent', (req, res) => {
   res.send('event made');
 });
 
-app.post('/makeevent', (req, res) => {
-  req.body.attendees = {};
-  Event.createEvent(req.body);
-});
-
 /**
  * Route to get events for both user, and events page
  * @param req.body, if it contains the username, then get
@@ -58,7 +54,6 @@ app.post('/makeevent', (req, res) => {
  * @return Sets the state detailbox to the clicked event
  */
 app.get('/events', (req, res) => {
-  console.warn('getting events')
   if (!req.body.username) {
     Event.findAll().then(events => res.send(events));
   } else {
@@ -83,6 +78,6 @@ app.get('*', (req, res) => {
 
 
 // start the server
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server is running on http://localhost:${process.env.PORT} or http://127.0.0.1:${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.warn(`Server is running on http://127.0.0.1:${PORT}`);
 });

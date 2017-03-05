@@ -197,7 +197,12 @@ class ProfilePage extends Dashboard {
             <CardText className="success-message">{this.state.successMessage}</CardText>}
 
           {/* MAP */}
-          <Map coordinates={this.state.location} geoCode={this.setCoordinates} />
+          <Map
+            setCoordinates={this.setCoordinates}
+            lat={this.state.location.latitude}
+            lng={this.state.location.longitude}
+            address={this.state.location.address}
+          />
 
           {/* SELECTED EVENT */}
           <EventDetail
@@ -213,12 +218,13 @@ class ProfilePage extends Dashboard {
           {/* EVENT BUTTON */}
           <RaisedButton
             className="fullButton"
-            label={this.state.open ?
+            label={this.state.viewForm ?
               'view events' :
               'create event'
             }
-            icon={this.state.open ?
-              <Icon.eye /> : <Icon.pencil />}
+            icon={this.state.viewForm ?
+              <Icon.eye /> :
+              <Icon.pencil />}
             onTouchTap={this.handleToggle}
             backgroundColor="#ADEBBE"
           />
@@ -227,9 +233,8 @@ class ProfilePage extends Dashboard {
           <Stepper
             view={this.state.viewForm}
             errors={this.state.errors}
-            closeDrawer={this.handleToggle}
             eventDetails={this.state.eventDetails}
-            eveChange={this.changeEvent}
+            eventChange={this.changeEvent}
             processForm={this.processEventForm}
             handleTime={this.handleTime}
             handleDate={this.handleDate}

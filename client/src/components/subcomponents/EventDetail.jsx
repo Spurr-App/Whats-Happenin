@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 import Icon from './Icons.jsx';
 
 const EventDetail = ({ event: {
@@ -13,12 +14,20 @@ const EventDetail = ({ event: {
   busLink,
 }, linkToCalender, event }) => (
   <article id="selectedEvent">
-    <div className="left">
+    <div className="left center">
       <img className="image" alt="" src="" />
+      <br />
+      {businessName !== '' && <div>Business: {businessName} <br /> </div>}
+      {busLink !== '' && <a target="_blank" rel="noreferrer noopener" href={busLink}>Website <br /> </a>}
+      <RaisedButton
+        className="fullButton"
+        onTouchTap={() => linkToCalender(event)}
+        icon={<Icon.date />}
+        // icon={<div><Icon.add /><Icon.date /></div>}
+        // label={<div><Icon.add /><Icon.date /></div>}
+      />
+      <br />
       <div>{tags}</div>
-      <button type="button" onClick={() => linkToCalender(event)}>
-        Add to Calender
-      </button>
     </div>
 
     <table>
@@ -46,8 +55,7 @@ const EventDetail = ({ event: {
       </tbody>
     </table>
 
-    {businessName !== '' && <div>Business: {businessName}</div>}
-    {busLink !== '' && <a target="_blank" rel="noreferrer noopener" href={busLink}>Website</a>}
+
     <br />
 
     <p>{description}</p>
@@ -57,7 +65,7 @@ const EventDetail = ({ event: {
 
 EventDetail.propTypes = {
   event: React.PropTypes.shape({}).isRequired,
-  linkToCalender: PropTypes.func.isRequired
+  linkToCalender: PropTypes.func.isRequired,
 };
 
 export default EventDetail;

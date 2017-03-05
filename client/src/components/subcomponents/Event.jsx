@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 import Icon from './Icons.jsx';
 
 const Event = ({ event, deleteEvent, setDetailsBox, event: {
@@ -14,13 +15,17 @@ const Event = ({ event, deleteEvent, setDetailsBox, event: {
     <div className="left center">
       <img className="image" alt="" src="" />
       <br />
-      <button type="button" onClick={() => setDetailsBox(event)}>
-        View Event
-      </button>
+      <RaisedButton
+        className="fullButton"
+        onTouchTap={() => setDetailsBox(event)}
+        icon={<Icon.eye />}
+      />
       <br />
-      <button type="button" onClick={() => deleteEvent(event)}>
-        Remove Event
-      </button>
+      <RaisedButton
+        className="fullButton"
+        onTouchTap={() => deleteEvent(event)}
+        icon={<Icon.clear />}
+      />
     </div>
 
     {/* EVENT INFO */}

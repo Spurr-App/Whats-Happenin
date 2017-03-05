@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Gmaps, Marker, InfoWindow } from 'react-gmaps';
+import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
 import Icon from './Icons.jsx';
+import colors from './Colors.jsx';
 
 class Map extends React.Component {
 
@@ -34,8 +37,9 @@ class Map extends React.Component {
     super(props);
     this.state = {
       location: {
-        latitude: null,
-        longitude: null,
+        address: props.address,
+        latitude: props.lat,
+        longitude: props.lng,
       },
       googleKey: null,
     };
@@ -78,13 +82,13 @@ class Map extends React.Component {
    * @param {setState} sets the location for the map to centralize
   */
   setStateGeoLocate(json) {
-    this.setState({
-      location: {
-        latitude: json.results[0].geometry.location.lat,
-        longitude: json.results[0].geometry.location.lng,
-        address: json.results[0].formatted_address,
-      },
-    });
+    const location = {
+      latitude: json.results[0].geometry.location.lat,
+      longitude: json.results[0].geometry.location.lng,
+      address: json.results[0].formatted_address,
+    };
+    this.setState({ location });
+    this.props.setCoordinates(location);
   }
   /**
    *
@@ -120,43 +124,72 @@ class Map extends React.Component {
       <div>
         {/* MAP */}
         <Gmaps
+          className="center"
           width={'500px'}
           height={'300px'}
           border-radius={'10px'}
-          lat={this.state.location.latitude}
-          lng={this.state.location.longitude}
+          lat={this.props.lat}
+          lng={this.props.lng}
           zoom={12}
           style={{ borderRadius: '5px' }}
-          // loadingMessage={'Be happy'}
           params={{ v: '3.exp', key: 'AIzaSyBRQ6rMKIjU7tsFNGxfmRhySiZXOt87Ykc' }}
           onMapCreated={this.onMapCreated}
         >
           <Marker
-            lat={this.state.location.latitude}
-            lng={this.state.location.longitude}
+            lat={this.props.lat}
+            lng={this.props.lng}
             draggable
             onDragEnd={this.onDragEnd}
           />
           <InfoWindow
-            lat={this.state.location.latitude}
-            lng={this.state.location.longitude}
+            lat={this.props.lat}
+            lng={this.props.lng}
             onCloseClick={this.onCloseClick}
-            content={this.state.location.address}
+            content={this.props.address}
           />
         </Gmaps>
 
         {/* LOCATION INPUT */}
-        <form onSubmit={this.handleSubmit} >
+        <div className="form">
+          <TextField
+            id="address"
+            onChange={this.handleChange}
+            hintText="Search location..."
+            hintStyle={{ color: colors.medium }}
+            underlineStyle={{ borderColor: colors.medium }}
+            underlineFocusStyle={{ borderColor: colors.light }}
+          />
+          <FlatButton
+            type="submit"
+            icon={<Icon.map />}
+            backgroundColor={colors.accent}
+            hoverColor={colors.light}
+            onTouchTap={this.handleSubmit}
+          />
+        </div>
+        {/* <form onSubmit={this.handleSubmit} >
           <div>{<Icon.map />}</div>
           <input id="address" name="location" onChange={this.handleChange} type="text" />
           <button type="submit">
             Go
           </button>
-        </form>
+        </form> */}
       </div>
     );
   }
 }
 
+Map.defaultProps = {
+  address: 'Loading...',
+  lat: 0,
+  lng: 0,
+};
+
+Map.propTypes = {
+  address: PropTypes.string,
+  lat: PropTypes.number,
+  lng: PropTypes.number,
+  setCoordinates: PropTypes.func.isRequired,
+};
 
 export default Map;

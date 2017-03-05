@@ -25,6 +25,7 @@ class DashboardPage extends React.Component {
     coordinates = coordinates[1].split(' ');
     coordinateObj.latitude = +coordinates[coordinates.length - 1];
     coordinateObj.longitude = +coordinates[1];
+    // console.log('parse coords', coordinateObj);
     return coordinateObj;
   }
 
@@ -36,6 +37,11 @@ class DashboardPage extends React.Component {
       eventList: [],
       detailsBox: {
         name,
+      },
+      location: {
+        longitude: null,
+        latitude: null,
+        address: null,
       },
     };
     this.linkToCalender = this.constructor.linkToCalender;
@@ -75,8 +81,11 @@ class DashboardPage extends React.Component {
    * @return Sets the state detailbox to the clicked event
    */
   setDetailsBox(detailsBox) {
-    this.setCoordinates(detailsBox);
+    // console.log('set dets', detailsBox);
     this.setState({ detailsBox });
+    // this.setCoordinates(detailsBox);
+    const location = this.constructor.parseCoordinates(detailsBox);
+    this.setState({ location });
   }
 
   /**
@@ -86,11 +95,13 @@ class DashboardPage extends React.Component {
    */
   setCoordinates(eventObj) {
     const location = this.constructor.parseCoordinates(eventObj);
+    console.log('coords then', location);
     this.setState({ location });
   }
 
   handleToggle() {
-    this.setState({ viewForm: !this.state.viewForm });
+    const now = !this.state.viewForm;
+    this.setState({ viewForm: now });
   }
 
   /*
@@ -123,12 +134,15 @@ class DashboardPage extends React.Component {
     // TODO: Was passing coordinates but it was undefined...this may be a bug
     return (
       <Dashboard
-        setCoordinates={this.setCoordinates}
-        setDetailsBox={this.setDetailsBox}
         data={this.state}
-        linkToCalender={this.constructor.linkToCalender}
+        lat={this.state.location.latitude}
+        lng={this.state.location.longitude}
+        address={this.state.location.address}
         fetchEvents={this.fetchEvents}
         deleteEvent={this.deleteEvent}
+        setDetailsBox={this.setDetailsBox}
+        setCoordinates={this.setCoordinates}
+        linkToCalender={this.constructor.linkToCalender}
       />
     );
   }

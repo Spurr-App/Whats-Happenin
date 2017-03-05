@@ -82,7 +82,7 @@ class VerticalNonLinear extends React.Component {
           {/* EVENT NAME */}
           <Step>
             <StepButton
-              onTouchTap={() => this.setState({ stepIndex: 4 })}
+              onTouchTap={() => this.setState({ stepIndex: 0 })}
               icon={<Icon.note />}
             >
               What&apos;s your party called?
@@ -94,7 +94,7 @@ class VerticalNonLinear extends React.Component {
                 hintText="Name"
                 style={style}
                 value={this.props.eventDetails.title}
-                onChange={this.props.eveChange}
+                onChange={this.props.eventChange}
                 errorText={this.props.errors.title}
               />
               {this.renderStepActions(0)}
@@ -117,7 +117,7 @@ class VerticalNonLinear extends React.Component {
                 hintText="Describe your sweet event"
                 style={style}
                 value={this.props.eventDetails.description}
-                onChange={this.props.eveChange}
+                onChange={this.props.eventChange}
               />
               {this.renderStepActions(1)}
             </StepContent>
@@ -199,7 +199,7 @@ class VerticalNonLinear extends React.Component {
                 hintText="Where"
                 style={style}
                 value={this.props.location.address}
-                onChange={this.props.eveChange}
+                onChange={this.props.eventChange}
                 errorText={this.props.errors.location}
               />
               {this.renderStepActions(5)}
@@ -221,7 +221,7 @@ class VerticalNonLinear extends React.Component {
                 hintText="Promote your business' website"
                 style={style}
                 value={this.props.eventDetails.busLink}
-                onChange={this.props.eveChange}
+                onChange={this.props.eventChange}
                 errorText={this.props.errors.busLink}
               />
               {this.renderStepActions(6)}
@@ -244,7 +244,7 @@ class VerticalNonLinear extends React.Component {
                 hintText="tags"
                 style={style}
                 value={this.props.eventDetails.tags}
-                onChange={this.props.eveChange}
+                onChange={this.props.eventChange}
               />
               {this.renderStepActions(7)}
             </StepContent>
@@ -259,7 +259,7 @@ class VerticalNonLinear extends React.Component {
           label="Submit Event"
           backgroundColor="#ADEBBE"
           style={
-            this.props.open ?
+            this.props.view ?
             { margin: '15px 0' } :
             { display: 'none' }
           }
@@ -272,6 +272,7 @@ class VerticalNonLinear extends React.Component {
 }
 
 VerticalNonLinear.propTypes = {
+  view: React.PropTypes.bool.isRequired,
   eventDetails: React.PropTypes.shape({
     username: React.PropTypes.string,
     title: React.PropTypes.string,
@@ -282,13 +283,23 @@ VerticalNonLinear.propTypes = {
     picLink: React.PropTypes.string,
     busLink: React.PropTypes.string,
     description: React.PropTypes.string,
+    eventDateObj: React.PropTypes.shape({}),
+    eventTimeObj: React.PropTypes.shape({}),
   }).isRequired,
-  eveChange: React.PropTypes.func.isRequired,
+  eventChange: React.PropTypes.func.isRequired,
   processForm: React.PropTypes.func.isRequired,
   handleTime: React.PropTypes.func.isRequired,
   handleDate: React.PropTypes.func.isRequired,
-  location: React.PropTypes.shape({}).isRequired,
-  errors: React.PropTypes.shape({}).isRequired,
+  location: React.PropTypes.shape({
+    address: React.PropTypes.string,
+  }).isRequired,
+  errors: React.PropTypes.shape({
+    title: React.PropTypes.string,
+    eventDate: React.PropTypes.string,
+    eventTime: React.PropTypes.string,
+    location: React.PropTypes.string,
+    busLink: React.PropTypes.string,
+  }).isRequired,
 };
 
 export default VerticalNonLinear;
