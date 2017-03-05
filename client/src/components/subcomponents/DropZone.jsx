@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
+import colors from './Colors.jsx';
 
 class FileDrop extends React.Component {
 
@@ -12,7 +13,7 @@ class FileDrop extends React.Component {
     this.style = {
       height: '200px',
       marginBottom: '15px',
-      border: '2px dashed #EEF3AD',
+      border: `2px dashed ${colors.accent}`,
       borderRadius: '10px',
       display: 'flex',
       alignItems: 'center',

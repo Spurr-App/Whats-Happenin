@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Icon from './Icons.jsx';
+import colors from './Colors.jsx';
 
 const EventDetail = ({ event: {
   username,
@@ -22,9 +23,8 @@ const EventDetail = ({ event: {
       <RaisedButton
         className="fullButton"
         onTouchTap={() => linkToCalender(event)}
-        icon={<Icon.date />}
-        // icon={<div><Icon.add /><Icon.date /></div>}
-        // label={<div><Icon.add /><Icon.date /></div>}
+        icon={<Icon.date color={colors.light} />}
+        backgroundColor={colors.dark}
       />
       <br />
       <div>{tags}</div>

@@ -18,63 +18,73 @@ const SignUpForm = ({
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Username"
-          type="username"
-          name="username"
-          errorText={errors.username}
-          onChange={onChange}
-          value={user.username}
-        />
-      </div>
-
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Name"
-          type="name"
-          name="name"
-          errorText={errors.name}
-          onChange={onChange}
-          value={user.name}
-        />
-      </div>
-
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Email"
-          name="email"
-          errorText={errors.email}
-          onChange={onChange}
-          value={user.email}
-        />
-      </div>
-
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Password"
-          type="password"
-          name="password"
-          onChange={onChange}
-          errorText={errors.password}
-          value={user.password}
-        />
-      </div>
-
-      <div className="field-line">
-        <TextField
-          floatingLabelText="City, State"
-          type="location"
-          name="location"
-          onChange={onChange}
-          errorText={errors.location}
-          value={user.location}
-        />
-      </div>
-
-      <div className="button-line">
-        <RaisedButton type="submit" label="Create New Account" primary />
-      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <TextField
+                floatingLabelText="Username"
+                type="username"
+                name="username"
+                errorText={errors.username}
+                onChange={onChange}
+                value={user.username}
+              />
+            </td>
+            <td>
+              <TextField
+                floatingLabelText="Name"
+                type="name"
+                name="name"
+                errorText={errors.name}
+                onChange={onChange}
+                value={user.name}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <TextField
+                floatingLabelText="Email"
+                name="email"
+                errorText={errors.email}
+                onChange={onChange}
+                value={user.email}
+              />
+            </td>
+            <td>
+              <TextField
+                floatingLabelText="Password"
+                type="password"
+                name="password"
+                onChange={onChange}
+                errorText={errors.password}
+                value={user.password}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <TextField
+                floatingLabelText="City, State"
+                type="location"
+                name="location"
+                onChange={onChange}
+                errorText={errors.location}
+                value={user.location}
+              />
+            </td>
+            <td>
+              <RaisedButton
+                className="fullButton"
+                type="submit"
+                label="Create New Account"
+                primary
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
       <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
     </form>

@@ -8,6 +8,7 @@ import TimePicker from 'material-ui/TimePicker';
 import DatePicker from 'material-ui/DatePicker';
 import DropZone from './DropZone.jsx';
 import Icon from './Icons.jsx';
+import colors from './Colors.jsx';
 
 const style = {
   width: '100%',
@@ -52,6 +53,7 @@ class VerticalNonLinear extends React.Component {
             disableTouchRipple
             disableFocusRipple
             onTouchTap={this.handlePrev}
+            backgroundColor={colors.medium}
             style={{ margin: '0 12px' }}
           />) }
         <RaisedButton
@@ -61,7 +63,7 @@ class VerticalNonLinear extends React.Component {
           primary
           onTouchTap={this.handleNext}
           overlayStyle={{
-            backgroundColor: '#EEF3AD',
+            backgroundColor: colors.accent,
           }}
         />
       </div>
@@ -257,7 +259,7 @@ class VerticalNonLinear extends React.Component {
           onTouchTap={this.props.processForm}
           className="fullButton"
           label="Submit Event"
-          backgroundColor="#ADEBBE"
+          backgroundColor={colors.medium}
           style={
             this.props.view ?
             { margin: '15px 0' } :

@@ -43,7 +43,7 @@ const LoginForm = ({
 
       <div className="button-line">
         <RaisedButton
-          className="fullButton"
+          // className="fullButton"
           type="submit"
           label="Log in"
           primary

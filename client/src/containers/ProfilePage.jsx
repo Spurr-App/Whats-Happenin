@@ -8,6 +8,7 @@ import Icon from '../components/subcomponents/Icons.jsx';
 import EventDetail from '../components/subcomponents/EventDetail.jsx';
 import EventList from '../components/subcomponents/EventList.jsx';
 import Stepper from '../components/subcomponents/Stepper.jsx';
+import colors from '../components/subcomponents/Colors.jsx';
 
 class ProfilePage extends Dashboard {
   constructor(props) {
@@ -226,7 +227,7 @@ class ProfilePage extends Dashboard {
               <Icon.eye /> :
               <Icon.pencil />}
             onTouchTap={this.handleToggle}
-            backgroundColor="#ADEBBE"
+            backgroundColor={colors.light}
           />
 
           {/* STEPPER FORM */}

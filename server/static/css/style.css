@@ -46,7 +46,9 @@ nav::after {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#signin-up form > div {
+#signin-up form {
+  margin: auto;
+  width: 520px;
   display: block;
 }
 
@@ -150,9 +152,9 @@ article {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.field-line, .button-line {
+/*.field-line, .button-line {
   padding: 5px;
-}
+}*/
 
 .error-message {
   padding: 0 16px;
@@ -169,8 +171,4 @@ article {
   padding: 10px;
   display: flex;
   justify-content: space-around;
-}
-
-form input {
-  width: 60%;
 }

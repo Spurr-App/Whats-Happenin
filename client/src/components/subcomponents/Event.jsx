@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Icon from './Icons.jsx';
+import colors from './Colors.jsx';
 
 const Event = ({ event, deleteEvent, setDetailsBox, event: {
   title,
@@ -18,13 +19,15 @@ const Event = ({ event, deleteEvent, setDetailsBox, event: {
       <RaisedButton
         className="fullButton"
         onTouchTap={() => setDetailsBox(event)}
-        icon={<Icon.eye />}
+        icon={<Icon.eye color={colors.medium} />}
+        backgroundColor={colors.accent}
       />
       <br />
       <RaisedButton
         className="fullButton"
         onTouchTap={() => deleteEvent(event)}
-        icon={<Icon.clear />}
+        icon={<Icon.clear color={colors.medium} />}
+        backgroundColor={colors.accent}
       />
     </div>
 
