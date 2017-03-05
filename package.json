@@ -4,7 +4,7 @@
   "description": "DeGreenfields",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "npm run bundle && node index.js",
     "dev": "npm run bundle && nodemon index.js",
     "server": "nodemon index.js",
     "bundle": "webpack"
