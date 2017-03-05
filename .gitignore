@@ -16,6 +16,7 @@
 /build
 
 # misc
+*.xcf
 .DS_Store
 .env
 npm-debug.log*
