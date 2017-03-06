@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: Eric Periou  
-  - __Scrum Master__: Devin Fields
-  - __Development Team Members__: Eric Periou, Devin Fields
+  - __Product Owner__: Alice Lai  
+  - __Scrum Master__: Olivia Sabo-Rush
+  - __Development Team Members__: Alice Lai, Devin Fields, Eric Periou, Olivia Sabo-Rush
 
 ## Table of Contents
 
@@ -44,16 +44,6 @@ To run in development environment, run npm start and a webpack server will start
 From within the root directory:
 
 npm install -S <package>
-
-
-### Roadmap
-
-View the project roadmap
--2/20/2017 Started project with backend and front in barebones
--2/23/2017 complete Refactor to use Passport local login
--2/24/2017 Factored to use GoogleMaps to geolocated events
--2/26/2017 Added functionality to input the fully designed events to the database.
-
 
 
 ## Contributing

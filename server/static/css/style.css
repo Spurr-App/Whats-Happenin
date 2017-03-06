@@ -46,7 +46,9 @@ nav::after {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#signin-up form > div {
+#signin-up form {
+  margin: auto;
+  width: 520px;
   display: block;
 }
 
@@ -56,6 +58,10 @@ nav::after {
   min-height: 900px;
   padding: 15px;
   background-color: #516091;
+  /*background-image: url('bubbles3.png');*/
+  background-position: bottom;
+  background-attachment: fixed;
+  background-repeat: repeat-x;
   display:flex;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -79,6 +85,7 @@ a:hover {
 
 .left {
   float: left;
+  margin-right: 10px;
 }
 
 .right {
@@ -99,7 +106,6 @@ a:hover {
   background: url('logo.png');
   background-size: 100px 100px;
   border: none;
-  margin-right: 10px;
   width: 100px;
   height: 100px;
 }
@@ -110,12 +116,25 @@ path {
 
 .fullButton {
   width: 100%;
-  margin-bottom: 15px;
+  border-radius: 5px;
+  margin-top:10px;
+  margin-bottom: 10px;
 }
 
 #map {
   max-width: 500px;
   position: fixed;
+}
+
+#selectedEvent {
+  background: #ADEBBE;
+  color: #516091;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+#selectedEvent path {
+  color: #516091;
 }
 
 #sidebar {
@@ -133,9 +152,9 @@ article {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.field-line, .button-line {
+/*.field-line, .button-line {
   padding: 5px;
-}
+}*/
 
 .error-message {
   padding: 0 16px;
@@ -147,13 +166,13 @@ article {
   color: green;
 }
 
-form {
+.form {
   /*background-color: transparent;*/
   padding: 10px;
   display: flex;
   justify-content: space-around;
 }
 
-form input {
-  width: 60%;
+#header {
+  display: none;
 }

@@ -1,18 +1,19 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
+import colors from './Colors.jsx';
 
 class FileDrop extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      files: [],
+      file: null,
     };
     this.onDrop = this.onDrop.bind(this);
     this.style = {
       height: '200px',
       marginBottom: '15px',
-      border: '2px dashed #EEF3AD',
+      border: `2px dashed ${colors.accent}`,
       borderRadius: '10px',
       display: 'flex',
       alignItems: 'center',
@@ -23,10 +24,10 @@ class FileDrop extends React.Component {
   onDrop(goodFiles, badFiles) {
     if (goodFiles) {
       console.log('Accepted files:', goodFiles);
+      this.props.handleImage(goodFiles[0]);
       this.setState({
-        files: goodFiles
+        file: goodFiles[0],
       });
-      console.log(this.state);
     } else {
       console.log('Rejected files:', badFiles);
     }
@@ -35,12 +36,19 @@ class FileDrop extends React.Component {
   render() {
     return (
       <div>
-        <Dropzone style={this.style} onDrop={this.onDrop} accept="image/*">
-          {this.state.files.length > 0 ?
+        <Dropzone
+          name="picLink"
+          // style={this.style}
+          onDrop={this.onDrop}
+          accept="image/*"
+          maxSize={null}
+          minSize={null}
+        >
+          {this.state.file ?
             <div>
               <div className="center">
-                <img alt="" src={this.state.files[0].preview} height="75px" />
-                <h2>Uploading {this.state.files.length} image...</h2>
+                <img alt="" src={this.state.file} height="75px" />
+                {/* <h2>Uploading {this.state.files.length} image...</h2> */}
               </div>
             </div> :
             <h1>Drop it hot</h1>}
@@ -50,4 +58,14 @@ class FileDrop extends React.Component {
   }
 
 }
-export default FileDrop
+
+FileDrop.propTypes = {
+  handleImage: React.PropTypes.func.isRequired,
+};
+
+export default FileDrop;
+
+{ /* <DropZone
+  value={this.props.eventDetails.picLink}
+  handleImage={this.props.handleImage}
+/> */ }

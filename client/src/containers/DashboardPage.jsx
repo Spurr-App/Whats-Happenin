@@ -14,34 +14,42 @@ class DashboardPage extends React.Component {
     window.open(url);
   }
 
-  static parseCoordinates(coordString) {
-    console.log(coordString, 'this is coordString in parseCoordinates');
-    let coordinates = coordString.split('longitude');
+  static parseCoordinates(eventObj) {
+    if (!eventObj.location) {
+      return eventObj;
+    }
+    let coordinates = eventObj.location.split('longitude');
     const coordinateObj = {
-      address: coordinates[0]
+      address: coordinates[0],
     };
     coordinates = coordinates[1].split(' ');
     coordinateObj.latitude = +coordinates[coordinates.length - 1];
     coordinateObj.longitude = +coordinates[1];
-
+    // console.log('parse coords', coordinateObj);
     return coordinateObj;
   }
 
   constructor(props) {
     super(props);
     this.state = {
+      viewForm: false,
       secretData: '',
       eventList: [],
       detailsBox: {
         name,
       },
+      location: {
+        longitude: null,
+        latitude: null,
+        address: null,
+      },
     };
+    this.linkToCalender = this.constructor.linkToCalender;
     this.fetchEvents();
 
-    // this.linkToCalender = this.linkToCalender.bind(this);
     // parseCoordinates = this.parseCoordinates.bind(this);
     this.setCoordinates = this.setCoordinates.bind(this);
-    this.setCoordinates2 = this.setCoordinates2.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
     this.setDetailsBox = this.setDetailsBox.bind(this);
     this.fetchEvents = this.fetchEvents.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
@@ -58,8 +66,8 @@ class DashboardPage extends React.Component {
       method: 'GET',
       headers: new Headers({
         'Content-type': 'application/x-www-form-urlencoded',
-        authorization: `bearer ${(Auth.getToken())}`
-      })
+        authorization: `bearer ${(Auth.getToken())}`,
+      }),
     })
     .then(res => res.json())
     .then(data => this.setState({ secretData: data.message }))
@@ -73,35 +81,35 @@ class DashboardPage extends React.Component {
    */
   setDetailsBox(detailsBox) {
     this.setState({ detailsBox });
-  }
-
-  /*
-  *
-  * @param {location} will be a set of coordinates
-  * @returns Sets the state coordinates, for each event list member
-  * allowing for the map to be updated
-  */
-  // TODO: Make these work, they are being used in different ways, pick one
-  setCoordinates(coordString) {
-    console.log(coordString, 'this is locationUnParsed in setCoordinatesConstructo');
-    const location = this.constructor.parseCoordinates(coordString);
+    const location = this.constructor.parseCoordinates(detailsBox);
     this.setState({ location });
   }
 
-  setCoordinates2(location) {
+  /**
+   * @param {object} eventObj : either a set of coordinates, or an event object with location key
+   * @returns {object} Sets the state coordinates, for each event list member
+   */
+  setCoordinates(eventObj) {
+    const location = this.constructor.parseCoordinates(eventObj);
     this.setState({ location });
   }
 
-  /*
+  /**
+   * viewForm variables declares whether create event form is shown
+   */
+  handleToggle() {
+    const now = !this.state.viewForm;
+    this.setState({ viewForm: now });
+  }
+
+ /**
   * @param {events} a list of event objects from query
   * @returns Sets the state eventlist to the array of events
   */
   fetchEvents() {
-    console.log('fetch events hit');
     fetch('/events')
       .then(events => events.json())
       .then((eventList) => {
-        console.log(eventList, 'these are events in fetch');
         this.setState({ eventList, detailsBox: eventList[0] });
       })
       .catch(err => console.error(err));
@@ -110,30 +118,27 @@ class DashboardPage extends React.Component {
   deleteEvent(event) {
     // TODO: this is async and should be fixed, then is not working
     const that = this;
-    console.log('this is event', event);
     fetch(`/deleteEvent/${event._id}`, {
       method: 'DELETE',
     })
-    .then((res) => {
-      console.log(res);
-      console.log(that.fetchEvents, 'this is fetch events');
-      that.fetchEvents()
+    .then(() => {
+      that.fetchEvents();
     });
-    // this.fetchEvents();
-    // this.fetchEvents();
   }
 
   render() {
     // TODO: Was passing coordinates but it was undefined...this may be a bug
     return (
       <Dashboard
-        setCoordinates={this.setCoordinates}
-        setCoordinates2={this.setCoordinates2}
-        setDetailsBox={this.setDetailsBox}
         data={this.state}
-        linkToCalender={this.constructor.linkToCalender}
+        lat={this.state.location.latitude}
+        lng={this.state.location.longitude}
+        address={this.state.location.address}
         fetchEvents={this.fetchEvents}
         deleteEvent={this.deleteEvent}
+        setDetailsBox={this.setDetailsBox}
+        setCoordinates={this.setCoordinates}
+        linkToCalender={this.constructor.linkToCalender}
       />
     );
   }

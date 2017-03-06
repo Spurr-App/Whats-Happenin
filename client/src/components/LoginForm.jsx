@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Card, CardText } from 'material-ui/Card';
+import { CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
@@ -43,7 +43,7 @@ const LoginForm = ({
 
       <div className="button-line">
         <RaisedButton
-          className="fullButton"
+          // className="fullButton"
           type="submit"
           label="Log in"
           primary
@@ -58,9 +58,9 @@ const LoginForm = ({
 LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
+  errors: React.PropTypes.shape({}).isRequired,
   successMessage: PropTypes.string.isRequired,
-  user: PropTypes.object.isRequired
+  user: React.PropTypes.shape({}).isRequired,
 };
 
 export default LoginForm;

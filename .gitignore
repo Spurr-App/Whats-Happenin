@@ -7,7 +7,8 @@
 /client/dist
 /client/dist/js
 /client/dist/js/app.js
-
+# /client/src
+/client/src/components/subcomponents/Stepper.js
 
 # testing
 /coverage
@@ -16,6 +17,7 @@
 /build
 
 # misc
+*.xcf
 .DS_Store
 .env
 npm-debug.log*
@@ -23,4 +25,3 @@ yarn-debug.log*
 yarn-error.log*
 
 .eslintrc.js
-/client/dist

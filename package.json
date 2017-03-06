@@ -1,17 +1,21 @@
 {
-  "name": "authentication-in-react-apps",
+  "name": "whats-happenin",
   "version": "1.0.0",
   "description": "DeGreenfields",
   "main": "index.js",
   "scripts": {
-    "start": "npm run bundle && node index.js",
+    "start": "node index.js",
     "dev": "npm run bundle && nodemon index.js",
-    "go": "nodemon index.js",
-    "bundle": "webpack"
+    "server": "nodemon index.js",
+    "bundle": "webpack",
+    "deploy": "npm run bundle && git push heroku deploy:master"
+  },
+  "engines": {
+    "node": "6.9.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vladimirponomarev/authentication-in-react-apps.git"
+    "url": "https://github.com/Spurr-App/Whats-Happenin.git"
   },
   "author": "DeGreenfields",
   "license": "MIT",

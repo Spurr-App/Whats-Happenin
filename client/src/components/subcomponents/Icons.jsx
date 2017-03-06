@@ -12,6 +12,14 @@ import NoEye from 'material-ui/svg-icons/action/visibility-off';
 import Pencil from 'material-ui/svg-icons/content/create';
 import Publish from 'material-ui/svg-icons/editor/publish';
 import Bullseye from 'material-ui/svg-icons/maps/my-location';
+import Add from 'material-ui/svg-icons/content/add';
+import Remove from 'material-ui/svg-icons/content/remove';
+import Clear from 'material-ui/svg-icons/content/clear';
+import Block from 'material-ui/svg-icons/content/block';
+import Back from 'material-ui/svg-icons/navigation/chevron-left';
+import Forward from 'material-ui/svg-icons/navigation/chevron-right';
+import Redo from 'material-ui/svg-icons/navigation/refresh';
+
 
 const Icons = {
   time: Clock,
@@ -27,8 +35,15 @@ const Icons = {
   pencil: Pencil,
   send: Publish,
   map: Bullseye,
-  star: Stars
-}
+  star: Stars,
+  add: Add,
+  rem: Remove,
+  clear: Clear,
+  block: Block,
+  for: Forward,
+  back: Back,
+  redo: Redo,
+};
 
 // import Icon from './Icons.jsx';
-export default Icons
+export default Icons;

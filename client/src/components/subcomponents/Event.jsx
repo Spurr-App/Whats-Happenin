@@ -1,30 +1,35 @@
 import React, { PropTypes } from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 import Icon from './Icons.jsx';
+import colors from './Colors.jsx';
 
-const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
+const Event = ({ event, deleteEvent, setDetailsBox, event: {
   title,
   username,
   eventTime,
   eventDate,
   location,
+  picLink,
   // businessName,
   // busLink,
 } }) => (
   <article>
     <div className="left center">
-      <img className="image" alt="" src="" />
+      <img className="image" alt="" src={picLink} />
       <br />
-      <button type="button" onClick={() => setDetailsBox(event)}>
-        View Event
-      </button>
+      <RaisedButton
+        className="fullButton"
+        onTouchTap={() => setDetailsBox(event)}
+        icon={<Icon.eye color={colors.medium} />}
+        backgroundColor={colors.accent}
+      />
       <br />
-      <button type="button" onClick={() => setCoordinates(event)}>
-        View Location
-      </button>
-      <br />
-      <button type="button" onClick={() => deleteEvent(event)}>
-        Remove Event
-      </button>
+      <RaisedButton
+        className="fullButton"
+        onTouchTap={() => deleteEvent(event)}
+        icon={<Icon.clear color={colors.medium} />}
+        backgroundColor={colors.accent}
+      />
     </div>
 
     {/* EVENT INFO */}
@@ -63,10 +68,9 @@ const Event = ({ event, deleteEvent, setCoordinates, setDetailsBox, event: {
 );
 
 Event.propTypes = {
-  event: PropTypes.object.isRequired,
+  event: React.PropTypes.shape({}).isRequired,
   deleteEvent: PropTypes.func.isRequired,
   setDetailsBox: PropTypes.func.isRequired,
-  setCoordinates: PropTypes.func.isRequired
 };
 
 export default Event;

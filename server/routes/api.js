@@ -7,7 +7,7 @@ const router = new express.Router();
 
 router.get('/dashboard', (req, res) => {
   res.status(200).json({
-    message: "Congratulations you're a member of our exclusive group of memebers"
+    message: "Congratulations you're a member of our exclusive group of memebers",
   });
 });
 
@@ -24,7 +24,7 @@ router.post('/makeevent', (req, res) => {
   Event.createEvent(req.body);
   res.status(200).json({
     body: req.body,
-    message: 'Your event was posted!'
+    message: 'Your event was posted!',
   });
 });
 

@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 import Icon from './Icons.jsx';
+import colors from './Colors.jsx';
 
 const EventDetail = ({ event: {
   username,
+  picLink,
   eventTime,
   eventDate,
   title,
@@ -11,14 +14,21 @@ const EventDetail = ({ event: {
   tags,
   businessName,
   busLink,
-}, setCoordinates, linkToCalender, event }) => (
-  <article>
-    <div className="left">
-      <img className="image" alt="" src="" />
+}, linkToCalender, event }) => (
+  <article id="selectedEvent">
+    <div className="left center">
+      <img className="image" alt="" src={picLink} />
+      <br />
+      {businessName !== '' && <div>Business: {businessName} <br /> </div>}
+      {busLink !== '' && <a target="_blank" rel="noreferrer noopener" href={busLink}>Website <br /> </a>}
+      <RaisedButton
+        className="fullButton"
+        onTouchTap={() => linkToCalender(event)}
+        icon={<Icon.date color={colors.light} />}
+        backgroundColor={colors.dark}
+      />
+      <br />
       <div>{tags}</div>
-      <button type="button" onClick={() => linkToCalender(event)}>
-        Add to Calender
-      </button>
     </div>
 
     <table>
@@ -46,8 +56,7 @@ const EventDetail = ({ event: {
       </tbody>
     </table>
 
-    {businessName !== '' && <div>Business: {businessName}</div>}
-    {busLink !== '' && <a target="_blank" rel="noreferrer noopener" href={busLink}>Website</a>}
+
     <br />
 
     <p>{description}</p>
@@ -56,9 +65,8 @@ const EventDetail = ({ event: {
 );
 
 EventDetail.propTypes = {
-  event: PropTypes.object.isRequired,
-  setCoordinates: PropTypes.func.isRequired,
-  linkToCalender: PropTypes.func.isRequired
+  event: React.PropTypes.shape({}).isRequired,
+  linkToCalender: PropTypes.func.isRequired,
 };
 
 export default EventDetail;

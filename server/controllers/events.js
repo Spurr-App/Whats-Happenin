@@ -2,6 +2,7 @@ const Event = require('../models/event.js');
 
 const Events = {
   createEvent(event) {
+    console.log(event);
     Event(event).save();
   },
   findAll() {
