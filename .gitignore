@@ -4,9 +4,9 @@
 
 /node_modules
 /config
-# /client/dist
-# /client/dist/js
-# /client/dist/js/app.js
+/client/dist
+/client/dist/js
+/client/dist/js/app.js
 # /client/src
 /client/src/components/subcomponents/Stepper.js
 

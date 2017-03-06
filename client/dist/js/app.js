@@ -34719,7 +34719,6 @@
 	    _this.linkToCalender = _this.constructor.linkToCalender;
 	    _this.fetchEvents();
 
-	    // this.linkToCalender = this.linkToCalender.bind(this);
 	    // parseCoordinates = this.parseCoordinates.bind(this);
 	    _this.setCoordinates = _this.setCoordinates.bind(_this);
 	    _this.handleToggle = _this.handleToggle.bind(_this);
@@ -34766,15 +34765,12 @@
 	  }, {
 	    key: 'setDetailsBox',
 	    value: function setDetailsBox(detailsBox) {
-	      // console.log('set dets', detailsBox);
 	      this.setState({ detailsBox: detailsBox });
-	      // this.setCoordinates(detailsBox);
 	      var location = this.constructor.parseCoordinates(detailsBox);
 	      this.setState({ location: location });
 	    }
 
 	    /**
-	     *
 	     * @param {object} eventObj : either a set of coordinates, or an event object with location key
 	     * @returns {object} Sets the state coordinates, for each event list member
 	     */
@@ -34785,6 +34781,11 @@
 	      var location = this.constructor.parseCoordinates(eventObj);
 	      this.setState({ location: location });
 	    }
+
+	    /**
+	     * viewForm variables declares whether create event form is shown
+	     */
+
 	  }, {
 	    key: 'handleToggle',
 	    value: function handleToggle() {
@@ -34792,10 +34793,10 @@
 	      this.setState({ viewForm: now });
 	    }
 
-	    /*
-	    * @param {events} a list of event objects from query
-	    * @returns Sets the state eventlist to the array of events
-	    */
+	    /**
+	     * @param {events} a list of event objects from query
+	     * @returns Sets the state eventlist to the array of events
+	     */
 
 	  }, {
 	    key: 'fetchEvents',
@@ -34820,8 +34821,6 @@
 	      }).then(function () {
 	        that.fetchEvents();
 	      });
-	      // this.fetchEvents();
-	      // this.fetchEvents();
 	    }
 	  }, {
 	    key: 'render',
@@ -45835,6 +45834,7 @@
 	          { id: 'sidebar' },
 	          _react2.default.createElement(_RaisedButton2.default, {
 	            className: 'fullButton',
+	            style: { margin: '0 0 15px 0' },
 	            label: this.state.viewForm ? 'view events' : 'create event',
 	            icon: this.state.viewForm ? _react2.default.createElement(_Icons2.default.eye, null) : _react2.default.createElement(_Icons2.default.pencil, null),
 	            onTouchTap: this.handleToggle,

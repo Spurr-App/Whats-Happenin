@@ -47,7 +47,6 @@ class DashboardPage extends React.Component {
     this.linkToCalender = this.constructor.linkToCalender;
     this.fetchEvents();
 
-    // this.linkToCalender = this.linkToCalender.bind(this);
     // parseCoordinates = this.parseCoordinates.bind(this);
     this.setCoordinates = this.setCoordinates.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
@@ -81,15 +80,12 @@ class DashboardPage extends React.Component {
    * @return Sets the state detailbox to the clicked event
    */
   setDetailsBox(detailsBox) {
-    // console.log('set dets', detailsBox);
     this.setState({ detailsBox });
-    // this.setCoordinates(detailsBox);
     const location = this.constructor.parseCoordinates(detailsBox);
     this.setState({ location });
   }
 
   /**
-   *
    * @param {object} eventObj : either a set of coordinates, or an event object with location key
    * @returns {object} Sets the state coordinates, for each event list member
    */
@@ -98,12 +94,15 @@ class DashboardPage extends React.Component {
     this.setState({ location });
   }
 
+  /**
+   * viewForm variables declares whether create event form is shown
+   */
   handleToggle() {
     const now = !this.state.viewForm;
     this.setState({ viewForm: now });
   }
 
-  /*
+ /**
   * @param {events} a list of event objects from query
   * @returns Sets the state eventlist to the array of events
   */
@@ -125,8 +124,6 @@ class DashboardPage extends React.Component {
     .then(() => {
       that.fetchEvents();
     });
-    // this.fetchEvents();
-    // this.fetchEvents();
   }
 
   render() {

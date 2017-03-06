@@ -218,6 +218,7 @@ class ProfilePage extends Dashboard {
           {/* EVENT BUTTON */}
           <RaisedButton
             className="fullButton"
+            style={{ margin: '0 0 15px 0' }}
             label={this.state.viewForm ?
               'view events' :
               'create event'
