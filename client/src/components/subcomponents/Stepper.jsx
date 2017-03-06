@@ -3,10 +3,8 @@ import React from 'react';
 import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
 import TimePicker from 'material-ui/TimePicker';
 import DatePicker from 'material-ui/DatePicker';
-import DropZone from './DropZone.jsx';
 import Icon from './Icons.jsx';
 import colors from './Colors.jsx';
 
@@ -20,7 +18,6 @@ class VerticalNonLinear extends React.Component {
     super(props);
     this.state = {
       stepIndex: 0,
-      open: false,
     };
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
@@ -48,23 +45,37 @@ class VerticalNonLinear extends React.Component {
     return (
       <div style={{ margin: '12px 0', float: 'right' }}>
         { step > 0 && (
-          <FlatButton
-            label="Back"
+          <RaisedButton
+            icon={<Icon.back color={colors.dark} />}
             disableTouchRipple
             disableFocusRipple
             onTouchTap={this.handlePrev}
             backgroundColor={colors.medium}
             style={{ margin: '0 12px' }}
           />) }
+        { step === 2 && (
+          <RaisedButton
+            icon={<Icon.redo color={colors.dark} />}
+            disableTouchRipple
+            disableFocusRipple
+            onTouchTap={() => {
+              const event = { target: {} };
+              event.target.name = 'picLink';
+              event.target.value = '';
+              this.props.eventChange(event);
+            }}
+            backgroundColor={colors.light}
+            style={{ margin: '0 12px 0 0' }}
+          />
+          )
+        }
         <RaisedButton
-          label="Next"
+          icon={<Icon.for color={colors.dark} />}
           disableTouchRipple
           disableFocusRipple
-          primary
           onTouchTap={this.handleNext}
-          overlayStyle={{
-            backgroundColor: colors.accent,
-          }}
+          backgroundColor={colors.accent}
+          style={{ margin: '0 12px 0 0' }}
         />
       </div>
     );
@@ -131,10 +142,29 @@ class VerticalNonLinear extends React.Component {
               onTouchTap={() => this.setState({ stepIndex: 2 })}
               icon={<Icon.cam />}
             >
-              Show off
+              Add flair
             </StepButton>
+
             <StepContent>
-              <DropZone />
+              {this.props.eventDetails.picLink ?
+                <img src={this.props.eventDetails.picLink} alt="" width="100%" /> :
+                <iframe
+                  id="tinypic_plugin_7777"
+                  width="100%"
+                  height="250px"
+                  src="http://plugin.tinypic.com/plugin/index.php?popts=l,narrow|t,images|c,url|i,en|s,false"
+                  frameBorder="0"
+                  scrolling="no"
+                />
+              }
+              <TextField
+                name="picLink"
+                type="text"
+                hintText="paste tinypic link here"
+                style={style}
+                value={this.props.eventDetails.picLink}
+                onChange={this.props.eventChange}
+              />
               {this.renderStepActions(2)}
             </StepContent>
           </Step>

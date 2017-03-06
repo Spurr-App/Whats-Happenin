@@ -16,6 +16,10 @@ import Add from 'material-ui/svg-icons/content/add';
 import Remove from 'material-ui/svg-icons/content/remove';
 import Clear from 'material-ui/svg-icons/content/clear';
 import Block from 'material-ui/svg-icons/content/block';
+import Back from 'material-ui/svg-icons/navigation/chevron-left';
+import Forward from 'material-ui/svg-icons/navigation/chevron-right';
+import Redo from 'material-ui/svg-icons/navigation/refresh';
+
 
 const Icons = {
   time: Clock,
@@ -36,6 +40,9 @@ const Icons = {
   rem: Remove,
   clear: Clear,
   block: Block,
+  for: Forward,
+  back: Back,
+  redo: Redo,
 };
 
 // import Icon from './Icons.jsx';

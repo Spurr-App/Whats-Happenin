@@ -7,7 +7,8 @@
     "start": "node index.js",
     "dev": "npm run bundle && nodemon index.js",
     "server": "nodemon index.js",
-    "bundle": "webpack"
+    "bundle": "webpack",
+    "deploy": "npm run bundle && git push heroku deploy:master"
   },
   "engines": {
     "node": "6.9.0"

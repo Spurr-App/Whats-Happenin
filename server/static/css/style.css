@@ -172,3 +172,7 @@ article {
   display: flex;
   justify-content: space-around;
 }
+
+#header {
+  display: none;
+}

@@ -8,6 +8,7 @@
 # /client/dist/js
 # /client/dist/js/app.js
 # /client/src
+/client/src/components/subcomponents/Stepper.js
 
 # testing
 /coverage

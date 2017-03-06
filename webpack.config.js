@@ -19,10 +19,10 @@ module.exports = {
       include: path.join(__dirname, '/client/src'),
       loader: 'babel',
       query: {
-        presets: ['react', 'es2015']
-      }
+        presets: ['react', 'es2015'],
+      },
     }],
   },
   // start Webpack in a watch mode, so Webpack will rebuild the bundle on changes
-  watch: false,
+  watch: true,
 };

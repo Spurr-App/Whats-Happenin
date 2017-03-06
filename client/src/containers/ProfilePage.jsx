@@ -15,7 +15,7 @@ class ProfilePage extends Dashboard {
     super(props);
     console.log(this);
     this.state = {
-      viewForm: false,
+      viewForm: true,
       eventList: [],
       detailsBox: {
         name,
@@ -102,6 +102,7 @@ class ProfilePage extends Dashboard {
   handleTime(event, time) {
     let newTime = time.toLocaleString().split(', ')[1];
     const analog = newTime.slice(0, 5);
+    console.log(newTime, analog);
     const ampm = newTime.slice(newTime.length - 2);
     newTime = `${analog} ${ampm}`;
 
@@ -122,7 +123,6 @@ class ProfilePage extends Dashboard {
    */
   //  TODO: Fix these numbers being sliced
   handleDate(event, date) {
-    console.log(date);
     const newDate = date.toString().slice(0, 15);
     const ev = this.state.eventDetails;
     ev.eventDateObj = date;
@@ -138,7 +138,6 @@ class ProfilePage extends Dashboard {
    * @return Sets the state successMessage to the returned message if successful
    */
   processEventForm(event) {
-    console.log(event);
     event.preventDefault();
     const eveDet = this.state.eventDetails;
     eveDet.location = {

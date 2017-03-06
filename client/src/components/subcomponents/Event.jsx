@@ -9,12 +9,13 @@ const Event = ({ event, deleteEvent, setDetailsBox, event: {
   eventTime,
   eventDate,
   location,
+  picLink,
   // businessName,
   // busLink,
 } }) => (
   <article>
     <div className="left center">
-      <img className="image" alt="" src="" />
+      <img className="image" alt="" src={picLink} />
       <br />
       <RaisedButton
         className="fullButton"

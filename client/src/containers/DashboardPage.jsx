@@ -95,7 +95,6 @@ class DashboardPage extends React.Component {
    */
   setCoordinates(eventObj) {
     const location = this.constructor.parseCoordinates(eventObj);
-    console.log('coords then', location);
     this.setState({ location });
   }
 

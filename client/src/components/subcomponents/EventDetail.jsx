@@ -5,6 +5,7 @@ import colors from './Colors.jsx';
 
 const EventDetail = ({ event: {
   username,
+  picLink,
   eventTime,
   eventDate,
   title,
@@ -16,7 +17,7 @@ const EventDetail = ({ event: {
 }, linkToCalender, event }) => (
   <article id="selectedEvent">
     <div className="left center">
-      <img className="image" alt="" src="" />
+      <img className="image" alt="" src={picLink} />
       <br />
       {businessName !== '' && <div>Business: {businessName} <br /> </div>}
       {busLink !== '' && <a target="_blank" rel="noreferrer noopener" href={busLink}>Website <br /> </a>}
